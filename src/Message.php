@@ -3,7 +3,7 @@
 namespace Metroplex\Edifact;
 
 /**
- * Represent an EDI message.
+ * Represent an EDI message for both reading and writing.
  */
 class Message
 {
@@ -101,5 +101,27 @@ class Message
         $this->segments[] = $segment;
 
         return $this;
+    }
+
+
+    /**
+     * Serialize all the segments added to this object.
+     *
+     * @return string
+     */
+    public function serialize()
+    {
+        return (new Serializer)->serialize($this->getAllSegments());
+    }
+
+
+    /**
+     * Allow the object to be serialized by casting to a string.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->serialize();
     }
 }

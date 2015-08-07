@@ -14,18 +14,47 @@ class Message
 
 
     /**
-     * Create a new instance.
+     * Create a new instance from a file.
      *
-     * @param string $message The EDI message
+     * @param string $file The full path to a file that contains an EDI message
+     *
+     * @return static
      */
-    public function __construct($input = null)
+    public static function fromFile($file)
     {
-        if (is_string($input)) {
-            $segments = (new Parser)->parse($input);
-            $this->addSegments($segments);
-        } elseif ($input !== null) {
-            $this->addSegments($input);
+        $message = file_get_contents($file);
+        if ($message === false) {
+            throw new \InvalidArgumentException("Unable to read the file: {$file}");
         }
+
+        return static::fromString($message);
+    }
+
+
+    /**
+     * Create a new instance from a string.
+     *
+     * @param string $string The EDI message content
+     *
+     * @return static
+     */
+    public static function fromString($string)
+    {
+        $segments = (new Parser)->parse($string);
+        return static::fromSegments($segments);
+    }
+
+
+    /**
+     * Create a new instance from an array of segments.
+     *
+     * @param Segment[] $segments The segments of the message
+     *
+     * @return static
+     */
+    public static function fromSegments($segments)
+    {
+        return (new static)->addSegments($segments);
     }
 
 

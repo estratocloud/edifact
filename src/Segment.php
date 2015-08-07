@@ -47,7 +47,7 @@ class Segment
      *
      * @return array
      */
-    public function getallElements()
+    public function getAllElements()
     {
         return $this->elements;
     }

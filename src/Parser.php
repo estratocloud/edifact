@@ -63,7 +63,7 @@ class Parser
      *
      * @param Token[] $tokens The tokens that make up the message
      *
-     * @return array
+     * @return Segment[]
      */
     protected function convertTokensToSegments(array $tokens)
     {
@@ -147,6 +147,9 @@ class Parser
             }
         }
 
-        return $segments;
+        foreach ($segments as $segment) {
+            $name = array_shift($segment);
+            yield new Segment($name, ...$segment);
+        }
     }
 }

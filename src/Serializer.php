@@ -30,9 +30,15 @@ class Serializer
                 $message .= $this->dataSeparator;
 
                 if (is_array($element)) {
+                    $element = array_map(
+                        function($string) {
+                            return $this->escape($string);
+                        },
+                        $element
+                    );
                     $message .= implode($this->componentSeparator, $element);
                 } else {
-                    $message .= $element;
+                    $message .= $this->escape($element);
                 }
             }
 
@@ -40,5 +46,27 @@ class Serializer
         }
 
         return $message;
+    }
+
+    /**
+     * Escapes control characters.
+     *
+     * @param string $string
+     * @return string
+     */
+    public function escape($string)
+    {
+        $control_characters = [
+            $this->escapeCharacter => $this->escapeCharacter . $this->escapeCharacter,
+            $this->componentSeparator => $this->escapeCharacter . $this->componentSeparator,
+            $this->dataSeparator => $this->escapeCharacter . $this->dataSeparator,
+            $this->segmentTerminator => $this->escapeCharacter . $this->segmentTerminator
+        ];
+
+        foreach($control_characters as $search => $replace) {
+            $string = str_replace($search, $replace, $string);
+        }
+
+        return $string;
     }
 }

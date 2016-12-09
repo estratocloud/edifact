@@ -30,13 +30,7 @@ class Serializer
                 $message .= $this->dataSeparator;
 
                 if (is_array($element)) {
-                    $element = array_map(
-                        function($string) {
-                            return $this->escape($string);
-                        },
-                        $element
-                    );
-                    $message .= implode($this->componentSeparator, $element);
+                    $message .= implode($this->componentSeparator, array_map([$this, 'escape'], $element));
                 } else {
                     $message .= $this->escape($element);
                 }

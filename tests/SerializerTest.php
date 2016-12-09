@@ -23,17 +23,47 @@ class SerializerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $message);
     }
 
-
-    public function testBasic1()
+    /**
+     * @dataProvider segments
+     */
+    public function testSerializer($expected, $segments)
     {
-        $this->assertSegments("RFF+PD:50515", [
-            new Segment("RFF", ["PD", "50515"]),
-        ]);
+        $this->assertSegments($expected, $segments);
     }
-    public function testBasic2()
+
+    public function segments()
     {
-        $this->assertSegments("RFF+PD+50515", [
-            new Segment("RFF", "PD", "50515"),
-        ]);
+        return [
+            [
+                "DTM+735:?+0000:406",
+                [
+                    new Segment("DTM", ["735", "+0000", "406"])
+                ]
+            ],
+            [
+                "QTY+136:12,235",
+                [
+                    new Segment("QTY", ["136", "12,235"]),
+                ]
+            ],
+            [
+                "ERC+10:The message does not make sense??",
+                [
+                    new Segment("ERC", ["10", "The message does not make sense?"]),
+                ]
+            ],
+            [
+                "RFF+PD:50515",
+                [
+                    new Segment("RFF", ["PD", "50515"])
+                ]
+            ],
+            [
+                "RFF+PD+50515",
+                [
+                    new Segment("RFF", "PD", "50515"),
+                ]
+            ]
+        ];
     }
 }

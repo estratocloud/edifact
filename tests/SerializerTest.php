@@ -47,9 +47,9 @@ class SerializerTest extends \PHPUnit_Framework_TestCase
                 ]
             ],
             [
-                "ERC+10:The message does not make sense?? / Beskeden giver ikke mening??",
+                "ERC+10:The message does not make sense??",
                 [
-                    new Segment("ERC", ["10", "The message does not make sense? / Beskeden giver ikke mening?"]),
+                    new Segment("ERC", ["10", "The message does not make sense?"]),
                 ]
             ],
             [

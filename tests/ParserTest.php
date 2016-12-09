@@ -3,6 +3,7 @@
 namespace Metroplex\Edifact\Tests;
 
 use Metroplex\Edifact\Parser;
+use Metroplex\Edifact\Segment;
 use Metroplex\Edifact\Tokenizer;
 use Mockery;
 
@@ -82,5 +83,79 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 
         $this->setupSpecialCharacters($message);
         $this->assertSame("TEST", $message);
+    }
+
+
+    private function assertSegments($message, array $segments)
+    {
+        $input = "UNA:+,? '\n";
+        $input .= $message . "'\n";
+
+        $result = $this->parser->parse($input);
+        $result = iterator_to_array($result);
+
+        $this->assertEquals($segments, $result);
+    }
+
+
+    public function testBasic1()
+    {
+        $this->assertSegments("RFF+PD:50515", [
+            new Segment("RFF", ["PD", "50515"]),
+        ]);
+    }
+    public function testBasic2()
+    {
+        $this->assertSegments("RFF+PD+50515", [
+            new Segment("RFF", "PD", "50515"),
+        ]);
+    }
+
+
+    public function testEscapeCharacter()
+    {
+        $this->assertSegments("ERC+10:The message does not make sense??", [
+            new Segment("ERC", ["10", "The message does not make sense?"]),
+        ]);
+    }
+
+
+    public function testEscapeComponentSeparator()
+    {
+        $this->assertSegments("ERC+10:Name?: Craig", [
+            new Segment("ERC", ["10", "Name: Craig"]),
+        ]);
+    }
+
+
+    public function testEscapeDataSeparator()
+    {
+        $this->assertSegments("DTM+735:?+0000:406", [
+            new Segment("DTM", ["735", "+0000", "406"]),
+        ]);
+    }
+
+
+    public function testEscapeDecimalPoint()
+    {
+        $this->assertSegments("QTY+136:12,235", [
+            new Segment("QTY", ["136", "12,235"]),
+        ]);
+    }
+
+
+    public function testEscapeSegmentTerminator()
+    {
+        $this->assertSegments("ERC+10:Craig?'s", [
+            new Segment("ERC", ["10", "Craig's"]),
+        ]);
+    }
+
+
+    public function testEscapeSequence()
+    {
+        $this->assertSegments("ERC+10:?:?+???' - ?:?+???' - ?:?+???'", [
+            new Segment("ERC", ["10", ":+?' - :+?' - :+?'"]),
+        ]);
     }
 }

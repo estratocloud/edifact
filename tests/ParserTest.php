@@ -9,7 +9,7 @@ use Mockery;
 
 class ParserTest extends \PHPUnit_Framework_TestCase
 {
-    protected $parser;
+    private $parser;
 
     public function setUp()
     {

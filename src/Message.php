@@ -5,12 +5,12 @@ namespace Metroplex\Edifact;
 /**
  * Represent an EDI message for both reading and writing.
  */
-class Message
+final class Message
 {
     /**
      * @var Segment[] $segments The segments that make up this message.
      */
-    protected $segments = [];
+    private $segments = [];
 
 
     /**

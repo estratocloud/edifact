@@ -5,7 +5,7 @@ namespace Metroplex\Edifact;
 /**
  * Serialize a bunch of segments into an EDI message string.
  */
-class Serializer
+final class Serializer
 {
     use ControlCharacterTrait;
 
@@ -50,7 +50,7 @@ class Serializer
      *
      * @return string
      */
-    public function escape($string)
+    private function escape($string)
     {
         $characters = [
             $this->escapeCharacter,

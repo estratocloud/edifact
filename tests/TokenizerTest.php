@@ -7,14 +7,14 @@ use Metroplex\Edifact\Tokenizer;
 
 class TokenizerTest extends \PHPUnit_Framework_TestCase
 {
-    protected $tokenizer;
+    private $tokenizer;
 
     public function setUp()
     {
         $this->tokenizer = new Tokenizer;
     }
 
-    protected function assertTokens($message, array $expected)
+    private function assertTokens($message, array $expected)
     {
         $tokens = $this->tokenizer->getTokens("{$message}'");
 

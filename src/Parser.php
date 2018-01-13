@@ -5,7 +5,7 @@ namespace Metroplex\Edifact;
 /**
  * Parse EDI messages into an array of segments.
  */
-class Parser
+final class Parser
 {
 
     /**
@@ -65,7 +65,7 @@ class Parser
      *
      * @return Segment[]
      */
-    protected function convertTokensToSegments(array $tokens)
+    private function convertTokensToSegments(array $tokens)
     {
         $segments = [];
         $currentSegment = -1;

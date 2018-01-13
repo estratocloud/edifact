@@ -10,12 +10,12 @@ class Segment
     /**
      * @var string $name The name of the segment.
      */
-    protected $name;
+    private $name;
 
     /**
      * @var array $elements The data elements for this segment.
      */
-    protected $elements;
+    private $elements;
 
 
     /**

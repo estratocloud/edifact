@@ -2,7 +2,7 @@
 
 namespace Metroplex\Edifact;
 
-class Token
+final class Token
 {
     const CONTENT               =   11;
     const COMPONENT_SEPARATOR   =   12;

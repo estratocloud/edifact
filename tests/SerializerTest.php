@@ -7,14 +7,14 @@ use Metroplex\Edifact\Serializer;
 
 class SerializerTest extends \PHPUnit_Framework_TestCase
 {
-    protected $serializer;
+    private $serializer;
 
     public function setUp()
     {
         $this->serializer = new Serializer;
     }
 
-    protected function assertSegments($expected, array $segments)
+    private function assertSegments($expected, array $segments)
     {
         $expected = "UNA:+,? '" . $expected . "'";
 

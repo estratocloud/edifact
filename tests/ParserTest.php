@@ -1,6 +1,6 @@
 <?php
 
-namespace Metroplex\Edifact\Tests;
+namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Parser;
 use Metroplex\Edifact\Segment;

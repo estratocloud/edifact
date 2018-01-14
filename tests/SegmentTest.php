@@ -2,7 +2,7 @@
 
 namespace Metroplex\EdifactTests;
 
-use Metroplex\Edifact\Segment;
+use Metroplex\Edifact\Segments\Segment;
 
 class SegmentTest extends \PHPUnit_Framework_TestCase
 {

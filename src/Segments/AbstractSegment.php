@@ -1,11 +1,11 @@
 <?php
 
-namespace Metroplex\Edifact;
+namespace Metroplex\Edifact\Segments;
 
 /**
  * Represent a segment of an EDI message.
  */
-class Segment
+abstract class AbstractSegment implements SegmentInterface
 {
     /**
      * @var string $name The name of the segment.

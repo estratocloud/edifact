@@ -4,6 +4,7 @@ namespace Metroplex\Edifact;
 
 use Metroplex\Edifact\Control\Characters as ControlCharacters;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+use Metroplex\Edifact\Segments\Segment;
 
 /**
  * Parse EDI messages into an array of segments.

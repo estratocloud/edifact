@@ -3,7 +3,7 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Message;
-use Metroplex\Edifact\Segment;
+use Metroplex\Edifact\Segments\Segment;
 
 class MessageTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,22 +18,18 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateWithSegments()
     {
-        $message = Message::fromSegments([
-            new Segment("36CF"),
-        ]);
-        $this->assertEquals([
-            new Segment("36CF"),
-        ], $message->getAllSegments());
+        $message = Message::fromSegments(new Segment("36CF"));
+        $this->assertEquals([new Segment("36CF")], $message->getAllSegments());
     }
 
 
     public function testGetSegments()
     {
-        $message = Message::fromSegments([
+        $message = Message::fromSegments(
             new Segment("36CF", 1),
             new Segment("CPD"),
-            new Segment("36CF", 2),
-        ]);
+            new Segment("36CF", 2)
+        );
 
         $result = $message->getSegments("36CF");
         $segments = iterator_to_array($result);
@@ -58,10 +54,10 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSegment()
     {
-        $message = Message::fromSegments([
+        $message = Message::fromSegments(
             new Segment("36CF", 1),
-            new Segment("36CF", 2),
-        ]);
+            new Segment("36CF", 2)
+        );
 
         $segment = $message->getSegment("36CF");
 

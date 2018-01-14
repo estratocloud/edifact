@@ -2,7 +2,7 @@
 
 namespace Metroplex\EdifactTests;
 
-use Metroplex\Edifact\Segment;
+use Metroplex\Edifact\Segments\Segment;
 use Metroplex\Edifact\Serializer;
 
 class SerializerTest extends \PHPUnit_Framework_TestCase
@@ -18,7 +18,7 @@ class SerializerTest extends \PHPUnit_Framework_TestCase
     {
         $expected = "UNA:+,? '" . $expected . "'";
 
-        $message = $this->serializer->serialize($segments);
+        $message = $this->serializer->serialize(...$segments);
 
         $this->assertEquals($expected, $message);
     }

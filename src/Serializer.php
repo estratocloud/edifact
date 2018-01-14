@@ -4,6 +4,7 @@ namespace Metroplex\Edifact;
 
 use Metroplex\Edifact\Control\Characters as ControlCharacters;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+use Metroplex\Edifact\Segments\SegmentInterface;
 
 /**
  * Serialize a bunch of segments into an EDI message string.
@@ -24,9 +25,11 @@ final class Serializer
     /**
      * Serialize all the passed segments.
      *
+     * @param SegmentInterface[] $segments The segments to serialize
+     *
      * @return string
      */
-    public function serialize($segments)
+    public function serialize(SegmentInterface ...$segments)
     {
         $message = "UNA";
         $message .= $this->characters->getComponentSeparator();

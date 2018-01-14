@@ -5,7 +5,7 @@ namespace Metroplex\EdifactTests;
 use duncan3dc\ObjectIntruder\Intruder;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Parser;
-use Metroplex\Edifact\Segment;
+use Metroplex\Edifact\Segments\Segment;
 use Mockery;
 
 class ParserTest extends \PHPUnit_Framework_TestCase

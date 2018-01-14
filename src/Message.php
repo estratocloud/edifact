@@ -2,13 +2,15 @@
 
 namespace Metroplex\Edifact;
 
+use Metroplex\Edifact\Segments\SegmentInterface;
+
 /**
  * Represent an EDI message for both reading and writing.
  */
 final class Message
 {
     /**
-     * @var Segment[] $segments The segments that make up this message.
+     * @var SegmentInterface[] $segments The segments that make up this message.
      */
     private $segments = [];
 
@@ -41,27 +43,27 @@ final class Message
     public static function fromString($string)
     {
         $segments = (new Parser)->parse($string);
-        return static::fromSegments($segments);
+        return static::fromSegments(...$segments);
     }
 
 
     /**
      * Create a new instance from an array of segments.
      *
-     * @param Segment[] $segments The segments of the message
+     * @param SegmentInterface[] $segments The segments of the message
      *
      * @return static
      */
-    public static function fromSegments($segments)
+    public static function fromSegments(SegmentInterface ...$segments)
     {
-        return (new static)->addSegments($segments);
+        return (new static)->addSegments(...$segments);
     }
 
 
     /**
      * Get all the segments.
      *
-     * @return Segment[]
+     * @return SegmentInterface[]
      */
     public function getAllSegments()
     {
@@ -74,7 +76,7 @@ final class Message
      *
      * @param string $name The name of the segment to return
      *
-     * @return Segment[]
+     * @return SegmentInterface[]
      */
     public function getSegments($name)
     {
@@ -91,7 +93,7 @@ final class Message
      *
      * @param string $name The name of the segment to return
      *
-     * @return Segment
+     * @return SegmentInterface
      */
     public function getSegment($name)
     {
@@ -104,11 +106,11 @@ final class Message
     /**
      * Add multiple segments to the message.
      *
-     * @param Segment[] $segments The segments to add
+     * @param SegmentInterface[] $segments The segments to add
      *
      * @return static
      */
-    public function addSegments($segments)
+    public function addSegments(SegmentInterface ...$segments)
     {
         foreach ($segments as $segment) {
             $this->addSegment($segment);
@@ -121,11 +123,11 @@ final class Message
     /**
      * Add a segment to the message.
      *
-     * @param Segment $segment The segment to add
+     * @param SegmentInterface $segment The segment to add
      *
      * @return static
      */
-    public function addSegment(Segment $segment)
+    public function addSegment(SegmentInterface $segment)
     {
         $this->segments[] = $segment;
 
@@ -140,7 +142,7 @@ final class Message
      */
     public function serialize()
     {
-        return (new Serializer)->serialize($this->getAllSegments());
+        return (new Serializer)->serialize(...$this->getAllSegments());
     }
 
 

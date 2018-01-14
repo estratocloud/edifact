@@ -1,28 +1,27 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Metroplex\EdifactTests\Control;
 
-use Metroplex\Edifact\Token;
-use Metroplex\Edifact\Tokenizer;
+use Metroplex\Edifact\Control\Characters;
 
-class ControlCharacterTest extends \PHPUnit_Framework_TestCase
+class CharacterTest extends \PHPUnit_Framework_TestCase
 {
-    protected $tokenizer;
+    private $characters;
 
     public function setUp()
     {
-        $this->tokenizer = new Tokenizer;
+        $this->characters = new Characters;
     }
 
     public function testInvalidControlCharacter1()
     {
         $this->setExpectedException("InvalidArgumentException", "Control characters must only be a single character");
-        $this->tokenizer->setComponentSeparator("[]");
+        $this->characters->withComponentSeparator("[]");
     }
 
     public function testInvalidControlCharacter2()
     {
         $this->setExpectedException("InvalidArgumentException", "Control characters must only be a single character");
-        $this->tokenizer->setDataSeparator("");
+        $this->characters->withDataSeparator("");
     }
 }

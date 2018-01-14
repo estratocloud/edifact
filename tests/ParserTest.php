@@ -2,9 +2,10 @@
 
 namespace Metroplex\EdifactTests;
 
+use duncan3dc\ObjectIntruder\Intruder;
+use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Parser;
 use Metroplex\Edifact\Segment;
-use Metroplex\Edifact\Tokenizer;
 use Mockery;
 
 class ParserTest extends \PHPUnit_Framework_TestCase
@@ -17,71 +18,68 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function setupSpecialCharacters(&$message, Tokenizer $tokenizer = null)
+    public function getControlCharacters(&$message, ControlCharactersInterface $characters = null)
     {
-        if ($tokenizer === null) {
-            $tokenizer = Mockery::mock(Tokenizer::class);
-            $tokenizer->shouldReceive("setComponentSeparator")->once()->with("1");
-            $tokenizer->shouldReceive("setDataSeparator")->once()->with("2");
-            $tokenizer->shouldReceive("setDecimalPoint")->once()->with("3");
-            $tokenizer->shouldReceive("setEscapeCharacter")->once()->with("4");
-            $tokenizer->shouldReceive("setSegmentTerminator")->once()->with("6");
+        if ($characters === null) {
+            $characters = Mockery::mock(ControlCharactersInterface::class);
+            $characters->shouldReceive("withComponentSeparator")->once()->with("1")->andReturn($characters);
+            $characters->shouldReceive("withDataSeparator")->once()->with("2")->andReturn($characters);
+            $characters->shouldReceive("withDecimalPoint")->once()->with("3")->andReturn($characters);
+            $characters->shouldReceive("withEscapeCharacter")->once()->with("4")->andReturn($characters);
+            $characters->shouldReceive("withReservedSpace")->once()->with("5")->andReturn($characters);
+            $characters->shouldReceive("withSegmentTerminator")->once()->with("6")->andReturn($characters);
         }
 
-        $class = new \ReflectionClass($this->parser);
+        $parser = new Intruder($this->parser);
 
-        $method = $class->getMethod("setupSpecialCharacters");
-
-        $method->setAccessible(true);
-
-        return $method->invokeArgs($this->parser, [&$message, $tokenizer]);
+        return $parser->_call("getControlCharacters", $message, $characters);
     }
 
 
-    public function testSetupSpecialCharacters1()
+    public function testGetControlCharacters1()
     {
         $message = "TEST";
 
-        $tokenizer = Mockery::mock(Tokenizer::class);
+        $characters = Mockery::mock(ControlCharactersInterface::class);
 
-        $this->setupSpecialCharacters($message, $tokenizer);
+        $this->getControlCharacters($message, $characters);
 
         $this->assertSame("TEST", $message);
     }
 
 
-    public function testSetupSpecialCharacters2()
+    public function testGetControlCharacters2()
     {
         $message = "UNA123456";
 
-        $this->setupSpecialCharacters($message);
+        $this->getControlCharacters($message);
         $this->assertSame("", $message);
     }
 
 
-    public function testSetupSpecialCharacters3()
+    public function testGetControlCharacters3()
     {
         $message = "UNA123456TEST";
 
-        $this->setupSpecialCharacters($message);
+        $this->getControlCharacters($message);
         $this->assertSame("TEST", $message);
     }
 
 
-    public function testSetupSpecialCharacters4()
+    public function testGetControlCharacters4()
     {
         $message = "UNA123456\nTEST";
 
-        $this->setupSpecialCharacters($message);
+        $this->getControlCharacters($message);
         $this->assertSame("TEST", $message);
     }
 
 
-    public function testSetupSpecialCharacters5()
+    public function testGetControlCharacters5()
     {
         $message = "UNA123456\r\nTEST";
 
-        $this->setupSpecialCharacters($message);
+        $this->getControlCharacters($message);
         $this->assertSame("TEST", $message);
     }
 

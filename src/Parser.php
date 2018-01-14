@@ -2,6 +2,9 @@
 
 namespace Metroplex\Edifact;
 
+use Metroplex\Edifact\Control\Characters as ControlCharacters;
+use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+
 /**
  * Parse EDI messages into an array of segments.
  */
@@ -15,13 +18,13 @@ final class Parser
      *
      * @return array
      */
-    public function parse($message)
+    public function parse($message, ControlCharactersInterface $characters = null)
     {
         $tokenizer = new Tokenizer;
 
-        $this->setupSpecialCharacters($message, $tokenizer);
+        $characters = $this->getControlCharacters($message, $characters);
 
-        $tokens = $tokenizer->getTokens($message);
+        $tokens = $tokenizer->getTokens($message, $characters);
 
         $segments = $this->convertTokensToSegments($tokens);
 
@@ -34,12 +37,16 @@ final class Parser
      *
      * @param string $message The EDI message to extract the UNA from
      *
-     * @return void
+     * @return ControlCharactersInterface
      */
-    protected function setupSpecialCharacters(&$message, Tokenizer $tokenizer)
+    private function getControlCharacters(&$message, ControlCharactersInterface $characters = null)
     {
+        if ($characters === null) {
+            $characters = new ControlCharacters;
+        }
+
         if (substr($message, 0, 3) !== "UNA") {
-            return;
+            return $characters;
         }
 
         # Get the character definitions
@@ -49,12 +56,13 @@ final class Parser
         $message = ltrim(mb_substr($message, 9), "\r\n");
 
         $pos = 0;
-        $tokenizer->setComponentSeparator(mb_substr($chars, $pos++, 1));
-        $tokenizer->setDataSeparator(mb_substr($chars, $pos++, 1));
-        $tokenizer->setDecimalPoint(mb_substr($chars, $pos++, 1));
-        $tokenizer->setEscapeCharacter(mb_substr($chars, $pos++, 1));
-        mb_substr($chars, $pos++, 1);
-        $tokenizer->setSegmentTerminator(mb_substr($chars, $pos++, 1));
+        return $characters
+            ->withComponentSeparator(mb_substr($chars, $pos++, 1))
+            ->withDataSeparator(mb_substr($chars, $pos++, 1))
+            ->withDecimalPoint(mb_substr($chars, $pos++, 1))
+            ->withEscapeCharacter(mb_substr($chars, $pos++, 1))
+            ->withReservedSpace(mb_substr($chars, $pos++, 1))
+            ->withSegmentTerminator(mb_substr($chars, $pos++, 1));
     }
 
 

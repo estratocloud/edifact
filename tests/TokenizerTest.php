@@ -2,6 +2,7 @@
 
 namespace Metroplex\EdifactTests;
 
+use Metroplex\Edifact\Control\Characters as ControlCharacters;
 use Metroplex\Edifact\Token;
 use Metroplex\Edifact\Tokenizer;
 
@@ -16,7 +17,7 @@ class TokenizerTest extends \PHPUnit_Framework_TestCase
 
     private function assertTokens($message, array $expected)
     {
-        $tokens = $this->tokenizer->getTokens("{$message}'");
+        $tokens = $this->tokenizer->getTokens("{$message}'", new ControlCharacters);
 
         $expected[] = new Token(Token::TERMINATOR, "'");
 
@@ -91,6 +92,6 @@ class TokenizerTest extends \PHPUnit_Framework_TestCase
     public function testNoTerminator()
     {
         $this->setExpectedException("RuntimeException", "Unexpected end of EDI message");
-        $this->tokenizer->getTokens("TEST");
+        $this->tokenizer->getTokens("TEST", new ControlCharacters);
     }
 }

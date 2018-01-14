@@ -3,6 +3,7 @@
 namespace Metroplex\Edifact;
 
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+use Metroplex\Edifact\Exceptions\ParseException;
 
 /**
  * Convert EDI messages into tokens for parsing.
@@ -134,7 +135,7 @@ final class Tokenizer
 
         while (!$this->isControlCharacter()) {
             if ($this->endOfMessage()) {
-                throw new \RuntimeException("Unexpected end of EDI message");
+                throw new ParseException("Unexpected end of EDI message");
             }
             $this->storeCurrentCharAndReadNext();
         }

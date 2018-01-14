@@ -2,6 +2,8 @@
 
 namespace Metroplex\Edifact\Control;
 
+use Metroplex\Edifact\Exceptions\InvalidArgumentException;
+
 /**
  * Handle the control characters used in EDI messages.
  */
@@ -49,7 +51,7 @@ final class Characters implements CharactersInterface
     private function withControlCharacter($type, $character)
     {
         if (mb_strlen($character) !== 1) {
-            throw new \InvalidArgumentException("Control characters must only be a single character");
+            throw new InvalidArgumentException("Control characters must only be a single character");
         }
 
         $characters = clone $this;

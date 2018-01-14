@@ -2,6 +2,7 @@
 
 namespace Metroplex\Edifact;
 
+use Metroplex\Edifact\Exceptions\InvalidArgumentException;
 use Metroplex\Edifact\Segments\SegmentInterface;
 
 /**
@@ -26,7 +27,7 @@ final class Message
     {
         $message = file_get_contents($file);
         if ($message === false) {
-            throw new \InvalidArgumentException("Unable to read the file: {$file}");
+            throw new InvalidArgumentException("Unable to read the file: {$file}");
         }
 
         return static::fromString($message);

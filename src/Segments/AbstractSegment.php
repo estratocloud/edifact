@@ -8,9 +8,9 @@ namespace Metroplex\Edifact\Segments;
 abstract class AbstractSegment implements SegmentInterface
 {
     /**
-     * @var string $name The name of the segment.
+     * @var string $code The code of the segment.
      */
-    private $name;
+    private $code;
 
     /**
      * @var array $elements The data elements for this segment.
@@ -21,24 +21,24 @@ abstract class AbstractSegment implements SegmentInterface
     /**
      * Create a new instance.
      *
-     * @param string $name The name of the segment.
+     * @param string $code The code of the segment.
      * @param array $elements The data elements for this segment.
      */
-    public function __construct($name, ...$elements)
+    public function __construct($code, ...$elements)
     {
-        $this->name = $name;
+        $this->code = $code;
         $this->elements = $elements;
     }
 
 
     /**
-     * Get the name of this segment.
+     * Get the code of this segment.
      *
      * @return string
      */
-    public function getName()
+    public function getSegmentCode()
     {
-        return $this->name;
+        return $this->code;
     }
 
 

@@ -157,8 +157,8 @@ final class Parser
         }
 
         foreach ($segments as $segment) {
-            $name = array_shift($segment);
-            yield new Segment($name, ...$segment);
+            $code = array_shift($segment);
+            yield new Segment($code, ...$segment);
         }
     }
 }

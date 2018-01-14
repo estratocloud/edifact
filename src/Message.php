@@ -72,16 +72,16 @@ final class Message
 
 
     /**
-     * Get all the segments that match the requested name.
+     * Get all the segments that match the requested code.
      *
-     * @param string $name The name of the segment to return
+     * @param string $code The code of the segment to return
      *
      * @return SegmentInterface[]
      */
-    public function getSegments($name)
+    public function getSegments($code)
     {
         foreach ($this->getAllSegments() as $segment) {
-            if ($segment->getName() === $name) {
+            if ($segment->getSegmentCode() === $code) {
                 yield $segment;
             }
         }
@@ -89,15 +89,15 @@ final class Message
 
 
     /**
-     * Get the first segment that matches the requested name.
+     * Get the first segment that matches the requested code.
      *
-     * @param string $name The name of the segment to return
+     * @param string $code The code of the segment to return
      *
      * @return SegmentInterface
      */
-    public function getSegment($name)
+    public function getSegment($code)
     {
-        foreach ($this->getSegments($name) as $segment) {
+        foreach ($this->getSegments($code) as $segment) {
             return $segment;
         }
     }

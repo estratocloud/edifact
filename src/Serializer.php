@@ -40,7 +40,7 @@ final class Serializer
         $message .= $this->characters->getSegmentTerminator();
 
         foreach ($segments as $segment) {
-            $message .= $segment->getName();
+            $message .= $segment->getSegmentCode();
             foreach ($segment->getAllElements() as $element) {
                 $message .= $this->characters->getDataSeparator();
 

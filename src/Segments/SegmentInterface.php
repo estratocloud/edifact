@@ -8,11 +8,11 @@ namespace Metroplex\Edifact\Segments;
 interface SegmentInterface
 {
     /**
-     * Get the name of this segment.
+     * Get the code of this segment.
      *
      * @return string
      */
-    public function getName();
+    public function getSegmentCode();
 
 
     /**

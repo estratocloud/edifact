@@ -7,10 +7,10 @@ use Metroplex\Edifact\Segments\Segment;
 class SegmentTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testGetName()
+    public function testGetSegmentCode()
     {
         $segment = new Segment("OMD");
-        $this->assertSame("OMD", $segment->getName());
+        $this->assertSame("OMD", $segment->getSegmentCode());
     }
 
 

@@ -4,18 +4,39 @@ namespace Metroplex\Edifact;
 
 use Metroplex\Edifact\Control\Characters as ControlCharacters;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
-use Metroplex\Edifact\Segments\Segment;
+use Metroplex\Edifact\Segments\Factory;
+use Metroplex\Edifact\Segments\FactoryInterface;
 
 /**
  * Parse EDI messages into an array of segments.
  */
 final class Parser
 {
+    /**
+     * @var FactoryInterface $factory A segment factory for creating segments.
+     */
+    private $factory;
+
+
+    /**
+     * Create a new instance.
+     *
+     * @param FactoryInterface $factory A segment factory for creating segments
+     */
+    public function __construct(FactoryInterface $factory = null)
+    {
+        if ($factory === null) {
+            $factory = new Factory;
+        }
+        $this->factory = $factory;
+    }
+
 
     /**
      * Parse the message into an array of segments.
      *
      * @param string $message The EDI message
+     * @param ControlCharactersInterface $characters The control characters
      *
      * @return array
      */
@@ -27,7 +48,7 @@ final class Parser
 
         $tokens = $tokenizer->getTokens($message, $characters);
 
-        $segments = $this->convertTokensToSegments($tokens);
+        $segments = $this->convertTokensToSegments($tokens, $characters);
 
         return $segments;
     }
@@ -37,6 +58,7 @@ final class Parser
      * Read (and remove) the UNA segment from the passed string.
      *
      * @param string $message The EDI message to extract the UNA from
+     * @param ControlCharactersInterface $characters The control characters
      *
      * @return ControlCharactersInterface
      */
@@ -71,10 +93,11 @@ final class Parser
      * Convert the tokenized message into an array of segments.
      *
      * @param Token[] $tokens The tokens that make up the message
+     * @param ControlCharactersInterface $characters The control characters
      *
      * @return Segment[]
      */
-    private function convertTokensToSegments(array $tokens)
+    private function convertTokensToSegments(array $tokens, ControlCharactersInterface $characters)
     {
         $segments = [];
         $currentSegment = -1;
@@ -158,7 +181,7 @@ final class Parser
 
         foreach ($segments as $segment) {
             $code = array_shift($segment);
-            yield new Segment($code, ...$segment);
+            yield $this->factory->createSegment($characters, $code, ...$segment);
         }
     }
 }

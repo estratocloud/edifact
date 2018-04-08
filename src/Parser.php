@@ -7,6 +7,11 @@ use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Segments\Factory;
 use Metroplex\Edifact\Segments\FactoryInterface;
 use Metroplex\Edifact\Segments\SegmentInterface;
+use function array_shift;
+use function is_array;
+use function ltrim;
+use function mb_substr;
+use function substr;
 
 /**
  * Parse EDI messages into an array of segments.

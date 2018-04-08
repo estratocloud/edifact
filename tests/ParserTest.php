@@ -7,6 +7,7 @@ use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Parser;
 use Metroplex\Edifact\Segments\Segment;
 use Mockery;
+use function iterator_to_array;
 
 class ParserTest extends \PHPUnit_Framework_TestCase
 {

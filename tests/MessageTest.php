@@ -4,6 +4,7 @@ namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Message;
 use Metroplex\Edifact\Segments\Segment;
+use function iterator_to_array;
 
 class MessageTest extends \PHPUnit_Framework_TestCase
 {

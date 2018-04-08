@@ -3,6 +3,7 @@
 namespace Metroplex\Edifact\Control;
 
 use Metroplex\Edifact\Exceptions\InvalidArgumentException;
+use function mb_strlen;
 
 /**
  * Handle the control characters used in EDI messages.

@@ -3,7 +3,8 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Exceptions\Exception;
-use Symfony\Component\Finder\Finder;
+use function glob;
+use function pathinfo;
 
 class ExceptionTest extends \PHPUnit_Framework_TestCase
 {

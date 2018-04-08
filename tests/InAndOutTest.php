@@ -3,6 +3,8 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Message;
+use function file_get_contents;
+use function str_replace;
 
 class CompleteTest extends \PHPUnit_Framework_TestCase
 {

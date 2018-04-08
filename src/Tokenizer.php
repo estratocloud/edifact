@@ -4,6 +4,9 @@ namespace Metroplex\Edifact;
 
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Exceptions\ParseException;
+use function in_array;
+use function mb_substr;
+use function strlen;
 
 /**
  * Convert EDI messages into tokens for parsing.

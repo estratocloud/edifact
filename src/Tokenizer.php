@@ -86,7 +86,7 @@ final class Tokenizer
     /**
      * Get the next character from the message.
      *
-     * @return void
+     * @return string
      */
     private function getNextChar()
     {
@@ -105,7 +105,7 @@ final class Tokenizer
     private function getNextToken()
     {
         if ($this->endOfMessage()) {
-            return;
+            return null;
         }
 
         # If we're not escaping this character then see if it's a control character
@@ -201,7 +201,7 @@ final class Tokenizer
     /**
      * Check if we've reached the end of the message
      *
-     * @return void
+     * @return bool
      */
     private function endOfMessage()
     {

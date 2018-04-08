@@ -6,6 +6,7 @@ use Metroplex\Edifact\Control\Characters as ControlCharacters;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Segments\Factory;
 use Metroplex\Edifact\Segments\FactoryInterface;
+use Metroplex\Edifact\Segments\SegmentInterface;
 
 /**
  * Parse EDI messages into an array of segments.
@@ -38,7 +39,7 @@ final class Parser
      * @param string $message The EDI message
      * @param ControlCharactersInterface $characters The control characters
      *
-     * @return array
+     * @return SegmentInterface[]
      */
     public function parse($message, ControlCharactersInterface $characters = null)
     {
@@ -95,7 +96,7 @@ final class Parser
      * @param Token[] $tokens The tokens that make up the message
      * @param ControlCharactersInterface $characters The control characters
      *
-     * @return Segment[]
+     * @return SegmentInterface[]
      */
     private function convertTokensToSegments(array $tokens, ControlCharactersInterface $characters)
     {

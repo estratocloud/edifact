@@ -9,6 +9,9 @@ use Metroplex\Edifact\Tokenizer;
 
 class TokenizerTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Tokenizer $tokenizer The instance we are testing.
+     */
     private $tokenizer;
 
     public function setUp()

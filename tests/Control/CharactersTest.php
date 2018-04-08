@@ -7,6 +7,9 @@ use Metroplex\Edifact\Exceptions\InvalidArgumentException;
 
 class CharacterTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Characters $characters The instance we are testing.
+     */
     private $characters;
 
     public function setUp()

@@ -62,11 +62,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Set the control character used to separate components.
-     *
-     * @param string $character The character to use
-     *
-     * @return CharactersInterface
+     * @inheritDoc
      */
     public function withComponentSeparator($character)
     {
@@ -75,9 +71,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Get the control character used to separate components.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function getComponentSeparator()
     {
@@ -86,11 +80,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Set the control character used to separate data elements.
-     *
-     * @param string $character The character to use
-     *
-     * @return CharactersInterface
+     * @inheritDoc
      */
     public function withDataSeparator($character)
     {
@@ -99,9 +89,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Get the control character used to separate data elements.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function getDataSeparator()
     {
@@ -110,11 +98,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Set the control character used as a decimal point.
-     *
-     * @param string $character The character to use
-     *
-     * @return CharactersInterface
+     * @inheritDoc
      */
     public function withDecimalPoint($character)
     {
@@ -123,9 +107,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Get the control character used as a decimal point.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function getDecimalPoint()
     {
@@ -134,11 +116,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Set the control character used as an escape character.
-     *
-     * @param string $character The character to use
-     *
-     * @return CharactersInterface
+     * @inheritDoc
      */
     public function withEscapeCharacter($character)
     {
@@ -147,9 +125,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Get the control character used as an escape character.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function getEscapeCharacter()
     {
@@ -158,11 +134,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Set the control character used as an segment terminator.
-     *
-     * @param string $character The character to use
-     *
-     * @return CharactersInterface
+     * @inheritDoc
      */
     public function withSegmentTerminator($character)
     {
@@ -171,9 +143,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Get the control character used as an segment terminator.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function getSegmentTerminator()
     {
@@ -182,11 +152,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Set the control character used as the reserved space.
-     *
-     * @param string $character The character to use
-     *
-     * @return CharactersInterface
+     * @inheritDoc
      */
     public function withReservedSpace($character)
     {
@@ -195,9 +161,7 @@ final class Characters implements CharactersInterface
 
 
     /**
-     * Get the control character used as an the reserved space.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function getReservedSpace()
     {

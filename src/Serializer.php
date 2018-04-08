@@ -11,6 +11,9 @@ use Metroplex\Edifact\Segments\SegmentInterface;
  */
 final class Serializer
 {
+    /**
+     * @var ControlCharactersInterface $characters The control characters to use when serializing.
+     */
     private $characters;
 
     public function __construct(ControlCharactersInterface $characters = null)

@@ -12,7 +12,7 @@ interface FactoryInterface
     /**
      * Create a new instance of the relevant class type.
      *
-     * @param ControlCharactersInterface $characters The control characters
+     * @param CharactersInterface $characters The control characters
      * @param string $name The name of the segment
      * @param array $elements The data elements for this segment
      *

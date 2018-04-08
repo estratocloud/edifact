@@ -10,6 +10,9 @@ use Mockery;
 
 class ParserTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Parser $parser The instance we are testing.
+     */
     private $parser;
 
     public function setUp()

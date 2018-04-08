@@ -7,6 +7,9 @@ use Metroplex\Edifact\Serializer;
 
 class SerializerTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Serializer $serializer The instance we are testing.
+     */
     private $serializer;
 
     public function setUp()

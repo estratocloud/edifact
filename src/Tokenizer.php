@@ -117,7 +117,7 @@ final class Tokenizer implements TokenizerInterface
                 return new Token(Token::COMPONENT_SEPARATOR, $this->extractStoredChars());
             }
 
-            if ($this->char === $this->characters->getDataSeparator()) {
+            if (in_array($this->char, [$this->characters->getDataSeparator(), $this->characters->getSegmentSeparator()], true)) {
                 $this->storeCurrentCharAndReadNext();
                 return new Token(Token::DATA_SEPARATOR, $this->extractStoredChars());
             }
@@ -153,6 +153,10 @@ final class Tokenizer implements TokenizerInterface
     {
         if ($this->isEscaped) {
             return false;
+        }
+
+        if ($this->char === $this->characters->getSegmentSeparator()) {
+            return true;
         }
 
         if ($this->char === $this->characters->getComponentSeparator()) {

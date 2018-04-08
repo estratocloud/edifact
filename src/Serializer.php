@@ -8,6 +8,7 @@ use Estrato\Edifact\Segments\SegmentInterface;
 
 use function array_map;
 use function implode;
+use function in_array;
 use function is_array;
 use function str_replace;
 
@@ -47,8 +48,15 @@ final class Serializer implements SerializerInterface
 
         foreach ($segments as $segment) {
             $message .= $segment->getSegmentCode();
+
+            $first = true;
             foreach ($segment->getAllElements() as $element) {
-                $message .= $this->characters->getDataSeparator();
+                if ($first) {
+                    $first = false;
+                    $message .= $this->characters->getSegmentSeparator();
+                } else {
+                    $message .= $this->characters->getDataSeparator();
+                }
 
                 if (is_array($element)) {
                     $message .= implode($this->characters->getComponentSeparator(), array_map([$this, 'escape'], $element));
@@ -78,11 +86,15 @@ final class Serializer implements SerializerInterface
             $this->characters->getComponentSeparator(),
             $this->characters->getDataSeparator(),
             $this->characters->getSegmentTerminator(),
+            $this->characters->getSegmentSeparator(),
         ];
 
         $search = [];
         $replace = [];
         foreach ($characters as $character) {
+            if (in_array($character, $search, true)) {
+                continue;
+            }
             $search[] = $character;
             $replace[] = $this->characters->getEscapeCharacter() . $character;
         }

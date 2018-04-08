@@ -101,6 +101,12 @@ final class Characters implements CharactersInterface
     }
 
 
+    public function getSegmentSeparator(): string
+    {
+        return $this->getDataSeparator();
+    }
+
+
     public function withDecimalPoint(string $character): CharactersInterface
     {
         return $this->withControlCharacter("decimalPoint", $character);

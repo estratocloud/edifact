@@ -44,6 +44,12 @@ interface CharactersInterface
 
 
     /**
+     * Get the character used to separate segment tags from their data components.
+     */
+    public function getSegmentSeparator(): string;
+
+
+    /**
      * Set the control character used as a decimal point.
      */
     public function withDecimalPoint(string $character): self;

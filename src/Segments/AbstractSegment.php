@@ -68,4 +68,13 @@ abstract class AbstractSegment implements SegmentInterface
 
         return $this->elements[$key];
     }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function setElement($key, $value)
+    {
+        $this->elements[$key] = $value;
+    }
 }

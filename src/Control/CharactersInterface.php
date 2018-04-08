@@ -8,6 +8,14 @@ namespace Metroplex\Edifact\Control;
 interface CharactersInterface
 {
     /**
+     * Get the character used to separate segment tags from their data components.
+     *
+     * @return string
+     */
+    public function getSegmentSeparator();
+
+
+    /**
      * Set the control character used to separate components.
      *
      * @param string $character The character to use

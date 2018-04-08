@@ -2,6 +2,7 @@
 
 namespace Metroplex\Edifact\Control;
 
+use Metroplex\Edifact\Exceptions\BadMethodCallException;
 use Metroplex\Edifact\Exceptions\InvalidArgumentException;
 use function strlen;
 
@@ -59,6 +60,15 @@ final class Characters implements CharactersInterface
         $characters->$type = $character;
 
         return $characters;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getSegmentSeparator()
+    {
+        return $this->getDataSeparator();
     }
 
 

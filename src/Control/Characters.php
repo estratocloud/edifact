@@ -3,6 +3,7 @@
 namespace Metroplex\Edifact\Control;
 
 use Metroplex\Edifact\Exceptions\InvalidArgumentException;
+use Metroplex\Edifact\Token;
 use function strlen;
 
 /**
@@ -167,5 +168,18 @@ final class Characters implements CharactersInterface
     public function getReservedSpace()
     {
         return $this->reservedSpace;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getControlCharacters()
+    {
+        return [
+            $this->getComponentSeparator() => Token::COMPONENT_SEPARATOR,
+            $this->getDataSeparator() => Token::DATA_SEPARATOR,
+            $this->getSegmentTerminator() => Token::TERMINATOR,
+        ];
     }
 }

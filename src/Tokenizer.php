@@ -2,6 +2,7 @@
 
 namespace Metroplex\Edifact;
 
+use function array_key_exists;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Exceptions\ParseException;
 use function in_array;
@@ -116,29 +117,20 @@ final class Tokenizer
             return null;
         }
 
-        # If we're not escaping this character then see if it's a control character
-        if (!$this->isEscaped) {
-            if ($this->char === $this->characters->getComponentSeparator()) {
-                $this->storeCurrentCharAndReadNext();
-                return new Token(Token::COMPONENT_SEPARATOR, $this->extractStoredChars());
-            }
+        if ($this->isControlCharacter()) {
+            $type = $this->characters->getControlCharacters()[$this->char];
 
-            if ($this->char === $this->characters->getDataSeparator()) {
-                $this->storeCurrentCharAndReadNext();
-                return new Token(Token::DATA_SEPARATOR, $this->extractStoredChars());
-            }
+            $this->storeCurrentCharAndReadNext();
+            $token = new Token($type, $this->extractStoredChars());
 
-            if ($this->char === $this->characters->getSegmentTerminator()) {
-                $this->storeCurrentCharAndReadNext();
-                $token = new Token(Token::TERMINATOR, $this->extractStoredChars());
-
+            if ($type === Token::TERMINATOR) {
                 # Ignore any trailing space after the end of the segment
                 while (in_array($this->char, ["\r", "\n"])) {
                     $this->readNextChar();
                 }
-
-                return $token;
             }
+
+            return $token;
         }
 
         while (!$this->isControlCharacter()) {
@@ -163,19 +155,7 @@ final class Tokenizer
             return false;
         }
 
-        if ($this->char === $this->characters->getComponentSeparator()) {
-            return true;
-        }
-
-        if ($this->char === $this->characters->getDataSeparator()) {
-            return true;
-        }
-
-        if ($this->char === $this->characters->getSegmentTerminator()) {
-            return true;
-        }
-
-        return false;
+        return array_key_exists($this->char, $this->characters->getControlCharacters());
     }
 
 

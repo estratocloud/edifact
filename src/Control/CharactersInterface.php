@@ -113,4 +113,12 @@ interface CharactersInterface
      * @return string
      */
     public function getReservedSpace();
+
+
+    /**
+     * Get the characters specifically used for control only.
+     *
+     * @return array Keyed by the control character with the value being a Token:: type
+     */
+    public function getControlCharacters();
 }

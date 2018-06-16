@@ -18,7 +18,7 @@ Read an EDI message from a file
 $message = \Metroplex\Edifact\Message::fromFile("/tmp/order.edi");
 
 foreach ($message->getAllSegments() as $segment) {
-    echo $segment->getName() . "\n";
+    echo $segment->getSegmentCode() . "\n";
 }
 ```
 

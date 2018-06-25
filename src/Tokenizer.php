@@ -19,6 +19,11 @@ final class Tokenizer
     private $message;
 
     /**
+     * @var int The current position in the message.
+     */
+    private $position = 0;
+
+    /**
      * @var ControlCharactersInterface $character The control characters for the message.
      */
     private $characters;
@@ -93,8 +98,8 @@ final class Tokenizer
      */
     private function getNextChar()
     {
-        $char = substr($this->message, 0, 1);
-        $this->message = substr($this->message, 1);
+        $char = substr($this->message, $this->position, 1);
+        ++$this->position;
 
         return $char;
     }

@@ -6,14 +6,14 @@ use Metroplex\Edifact\Message;
 use function file_get_contents;
 use function str_replace;
 
-class CompleteTest extends \PHPUnit_Framework_TestCase
+class InAndOutTest extends \PHPUnit_Framework_TestCase
 {
 
     public function messageProvider()
     {
         $path = __DIR__ . "/data";
-        yield ["{$path}/wikipedia.edi"];
         yield ["{$path}/order.edi"];
+        yield ["{$path}/wikipedia.edi"];
     }
     /**
      * @dataProvider messageProvider

@@ -12,6 +12,7 @@ class InAndOutTest extends \PHPUnit_Framework_TestCase
     public function messageProvider()
     {
         $path = __DIR__ . "/data";
+        yield ["{$path}/multibyte.edi"];
         yield ["{$path}/order.edi"];
         yield ["{$path}/wikipedia.edi"];
     }

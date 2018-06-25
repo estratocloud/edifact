@@ -5,6 +5,15 @@ Changelog
 
 --------
 
+## 1.1.0 - 2018-06-25
+
+### Changed
+
+* [Parser] Huge performance improvements, large files in particular are now parsed over 30 times faster.
+* [Parser] Simplify multibyte support as EDIFACT requires that tag names and separators/delimiters are ASCII.
+
+--------
+
 ## 1.0.0 - 2018-01-28
 
 ### Added

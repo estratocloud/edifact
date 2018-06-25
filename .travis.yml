@@ -20,6 +20,7 @@ install:
   - composer update $COMPOSER_OPTS
 
 script:
+  - rm -fv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
   - vendor/bin/phpunit
   - tests/lint.sh
 

@@ -10,7 +10,6 @@ use Metroplex\Edifact\Segments\SegmentInterface;
 use function array_shift;
 use function is_array;
 use function ltrim;
-use function mb_substr;
 use function substr;
 
 /**
@@ -79,19 +78,19 @@ final class Parser
         }
 
         # Get the character definitions
-        $chars = mb_substr($message, 3, 6);
+        $chars = substr($message, 3, 6);
 
         # Remove the UNA segment from the original message
-        $message = ltrim(mb_substr($message, 9), "\r\n");
+        $message = ltrim(substr($message, 9), "\r\n");
 
         $pos = 0;
         return $characters
-            ->withComponentSeparator(mb_substr($chars, $pos++, 1))
-            ->withDataSeparator(mb_substr($chars, $pos++, 1))
-            ->withDecimalPoint(mb_substr($chars, $pos++, 1))
-            ->withEscapeCharacter(mb_substr($chars, $pos++, 1))
-            ->withReservedSpace(mb_substr($chars, $pos++, 1))
-            ->withSegmentTerminator(mb_substr($chars, $pos++, 1));
+            ->withComponentSeparator(substr($chars, $pos++, 1))
+            ->withDataSeparator(substr($chars, $pos++, 1))
+            ->withDecimalPoint(substr($chars, $pos++, 1))
+            ->withEscapeCharacter(substr($chars, $pos++, 1))
+            ->withReservedSpace(substr($chars, $pos++, 1))
+            ->withSegmentTerminator(substr($chars, $pos++, 1));
     }
 
 

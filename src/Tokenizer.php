@@ -5,8 +5,8 @@ namespace Metroplex\Edifact;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Exceptions\ParseException;
 use function in_array;
-use function mb_substr;
 use function strlen;
+use function substr;
 
 /**
  * Convert EDI messages into tokens for parsing.
@@ -93,8 +93,8 @@ final class Tokenizer
      */
     private function getNextChar()
     {
-        $char = mb_substr($this->message, 0, 1);
-        $this->message = mb_substr($this->message, 1);
+        $char = substr($this->message, 0, 1);
+        $this->message = substr($this->message, 1);
 
         return $char;
     }

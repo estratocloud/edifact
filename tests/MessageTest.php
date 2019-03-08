@@ -46,7 +46,7 @@ class MessageTest extends TestCase
 
     public function testGetSegmentsDoesntExist()
     {
-        $message = new Message;
+        $message = new Message();
 
         $result = $message->getSegments("36CF");
         $segments = iterator_to_array($result);
@@ -70,7 +70,7 @@ class MessageTest extends TestCase
 
     public function testGetSegmentDoesntExist()
     {
-        $message = new Message;
+        $message = new Message();
 
         $segment = $message->getSegment("36CF");
 

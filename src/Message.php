@@ -43,7 +43,7 @@ final class Message
      */
     public static function fromString($string)
     {
-        $segments = (new Parser)->parse($string);
+        $segments = (new Parser())->parse($string);
         return static::fromSegments(...$segments);
     }
 
@@ -57,7 +57,7 @@ final class Message
      */
     public static function fromSegments(SegmentInterface ...$segments)
     {
-        return (new static)->addSegments(...$segments);
+        return (new static())->addSegments(...$segments);
     }
 
 
@@ -143,7 +143,7 @@ final class Message
      */
     public function serialize()
     {
-        return (new Serializer)->serialize(...$this->getAllSegments());
+        return (new Serializer())->serialize(...$this->getAllSegments());
     }
 
 

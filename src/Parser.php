@@ -31,7 +31,7 @@ final class Parser
     public function __construct(FactoryInterface $factory = null)
     {
         if ($factory === null) {
-            $factory = new Factory;
+            $factory = new Factory();
         }
         $this->factory = $factory;
     }
@@ -47,7 +47,7 @@ final class Parser
      */
     public function parse($message, ControlCharactersInterface $characters = null)
     {
-        $tokenizer = new Tokenizer;
+        $tokenizer = new Tokenizer();
 
         $characters = $this->getControlCharacters($message, $characters);
 
@@ -70,7 +70,7 @@ final class Parser
     private function getControlCharacters(&$message, ControlCharactersInterface $characters = null)
     {
         if ($characters === null) {
-            $characters = new ControlCharacters;
+            $characters = new ControlCharacters();
         }
 
         if (substr($message, 0, 3) !== "UNA") {
@@ -109,7 +109,6 @@ final class Parser
         $inSegment = false;
 
         foreach ($tokens as $token) {
-
             # If we're in the middle of a segment, check if we've reached the end
             if ($inSegment) {
                 if ($token->type === Token::TERMINATOR) {

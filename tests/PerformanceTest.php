@@ -19,7 +19,7 @@ class PerformanceTest extends TestCase
             $this->markTestSkipped("Cannot test performance as xdebug makes things slow");
         }
 
-        $data = file_get_contents(__DIR__ ."/data/wikipedia.edi");
+        $data = file_get_contents(__DIR__ . "/data/wikipedia.edi");
 
         file_put_contents($this->tmp, "");
         for ($i = 0; $i < 9999; ++$i) {

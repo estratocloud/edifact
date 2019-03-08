@@ -17,12 +17,12 @@ class TokenizerTest extends TestCase
 
     public function setUp(): void
     {
-        $this->tokenizer = new Tokenizer;
+        $this->tokenizer = new Tokenizer();
     }
 
     private function assertTokens($message, array $expected)
     {
-        $tokens = $this->tokenizer->getTokens("{$message}'", new ControlCharacters);
+        $tokens = $this->tokenizer->getTokens("{$message}'", new ControlCharacters());
 
         $expected[] = new Token(Token::TERMINATOR, "'");
 
@@ -98,6 +98,6 @@ class TokenizerTest extends TestCase
     {
         $this->expectException(ParseException::class);
         $this->expectExceptionMessage("Unexpected end of EDI message");
-        $this->tokenizer->getTokens("TEST", new ControlCharacters);
+        $this->tokenizer->getTokens("TEST", new ControlCharacters());
     }
 }

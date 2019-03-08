@@ -15,7 +15,7 @@ class CharacterTest extends TestCase
 
     public function setUp(): void
     {
-        $this->characters = new Characters;
+        $this->characters = new Characters();
     }
 
     public function testInvalidControlCharacter1()

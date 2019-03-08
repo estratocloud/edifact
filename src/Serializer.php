@@ -23,7 +23,7 @@ final class Serializer
     public function __construct(ControlCharactersInterface $characters = null)
     {
         if ($characters === null) {
-            $characters = new ControlCharacters;
+            $characters = new ControlCharacters();
         }
         $this->characters = $characters;
     }

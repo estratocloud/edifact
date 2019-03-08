@@ -15,7 +15,7 @@ class SerializerTest extends TestCase
 
     public function setUp(): void
     {
-        $this->serializer = new Serializer;
+        $this->serializer = new Serializer();
     }
 
     private function assertSegments($expected, array $segments)

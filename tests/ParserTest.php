@@ -19,7 +19,7 @@ class ParserTest extends TestCase
 
     public function setUp(): void
     {
-        $this->parser = new Parser;
+        $this->parser = new Parser();
     }
 
 

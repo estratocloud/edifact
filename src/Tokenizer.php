@@ -29,9 +29,9 @@ final class Tokenizer
     private $characters;
 
     /**
-     * @var string|null $char The current character from the message we are dealing with.
+     * @var string $char The current character from the message we are dealing with.
      */
-    private $char;
+    private $char = "";
 
     /**
      * @var string $string The stored characters for the next token.
@@ -57,7 +57,7 @@ final class Tokenizer
     {
         $this->message = $message;
         $this->characters = $characters;
-        $this->char = null;
+        $this->char = "";
         $this->string = "";
 
         $this->readNextChar();
@@ -136,7 +136,7 @@ final class Tokenizer
                 $token = new Token(Token::TERMINATOR, $this->extractStoredChars());
 
                 # Ignore any trailing space after the end of the segment
-                while (in_array($this->char, ["\r", "\n"])) {
+                while (in_array($this->char, ["\r", "\n"], true)) {
                     $this->readNextChar();
                 }
 

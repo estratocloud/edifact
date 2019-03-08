@@ -10,6 +10,7 @@ use Metroplex\Edifact\Segments\FactoryInterface;
 use Metroplex\Edifact\Segments\SegmentInterface;
 use function array_shift;
 use function is_array;
+use function is_string;
 use function ltrim;
 use function substr;
 
@@ -102,7 +103,7 @@ final class Parser
      * @param Token[] $tokens The tokens that make up the message
      * @param ControlCharactersInterface $characters The control characters
      *
-     * @return SegmentInterface[]
+     * @return iterable&SegmentInterface[]
      */
     private function convertTokensToSegments(array $tokens, ControlCharactersInterface $characters): iterable
     {
@@ -110,6 +111,8 @@ final class Parser
         $currentSegment = -1;
         $inSegment = false;
 
+        $part = 0;
+        $key = 0;
         foreach ($tokens as $token) {
             # If we're in the middle of a segment, check if we've reached the end
             if ($inSegment) {
@@ -187,6 +190,9 @@ final class Parser
 
         foreach ($segments as $segment) {
             $code = array_shift($segment);
+            if (!is_string($code)) {
+                throw new ParseException("Invalid segment encountered, first element should be the name");
+            }
             yield $this->factory->createSegment($characters, $code, ...$segment);
         }
     }

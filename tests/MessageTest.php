@@ -2,6 +2,7 @@
 
 namespace Metroplex\EdifactTests;
 
+use function is_array;
 use Metroplex\Edifact\Message;
 use Metroplex\Edifact\Segments\Segment;
 use function iterator_to_array;
@@ -35,7 +36,7 @@ class MessageTest extends TestCase
         );
 
         $result = $message->getSegments("36CF");
-        $segments = iterator_to_array($result);
+        $segments = is_array($result) ? $result : iterator_to_array($result);
 
         $this->assertEquals([
             new Segment("36CF", 1),
@@ -49,7 +50,7 @@ class MessageTest extends TestCase
         $message = new Message();
 
         $result = $message->getSegments("36CF");
-        $segments = iterator_to_array($result);
+        $segments = is_array($result) ? $result : iterator_to_array($result);
 
         $this->assertSame([], $segments);
     }

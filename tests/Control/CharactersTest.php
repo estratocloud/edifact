@@ -6,7 +6,7 @@ use Metroplex\Edifact\Control\Characters;
 use Metroplex\Edifact\Exceptions\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
-class CharacterTest extends TestCase
+class CharactersTest extends TestCase
 {
     /**
      * @var Characters $characters The instance we are testing.

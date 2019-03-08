@@ -18,6 +18,9 @@
         "duncan3dc/object-intruder": "^0.3.0",
         "maglnet/composer-require-checker": "^1.1",
         "mockery/mockery": "^1.0",
+        "phpstan/phpstan": "^0.11.2",
+        "phpstan/phpstan-mockery": "^0.11.0",
+        "phpstan/phpstan-phpunit": "^0.11.0",
         "squizlabs/php_codesniffer": "^3.4",
         "phpunit/phpunit": "^8.0"
     },
@@ -25,6 +28,6 @@
         "psr-4": {"Metroplex\\Edifact\\": "src/"}
     },
     "autoload-dev": {
-        "psr-4": {"Metroplex\\Edifact\\Test\\": "tests/"}
+        "psr-4": {"Metroplex\\EdifactTests\\": "tests/"}
     }
 }

@@ -54,7 +54,7 @@ final class Message
     /**
      * Create a new instance from an array of segments.
      *
-     * @param SegmentInterface[] $segments The segments of the message
+     * @param SegmentInterface ...$segments The segments of the message
      *
      * @return static
      */
@@ -80,7 +80,7 @@ final class Message
      *
      * @param string $code The code of the segment to return
      *
-     * @return SegmentInterface[]
+     * @return iterable&SegmentInterface[]
      */
     public function getSegments(string $code): iterable
     {

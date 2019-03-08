@@ -3,6 +3,7 @@
 namespace Metroplex\EdifactTests;
 
 use duncan3dc\ObjectIntruder\Intruder;
+use function is_array;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Parser;
 use Metroplex\Edifact\Segments\Segment;
@@ -95,7 +96,7 @@ class ParserTest extends TestCase
         $input .= $message . "'\n";
 
         $result = $this->parser->parse($input);
-        $result = iterator_to_array($result);
+        $result = is_array($result) ? $result : iterator_to_array($result);
 
         $this->assertEquals($segments, $result);
     }

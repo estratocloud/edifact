@@ -24,7 +24,7 @@ class InAndOutTest extends TestCase
     {
         $output = (string) Message::fromFile($file);
 
-        $message = file_get_contents($file);
+        $message = (string) file_get_contents($file);
         $expected = str_replace("\n", "", $message);
 
         $this->assertSame($expected, $output);

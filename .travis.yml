@@ -31,4 +31,3 @@ git:
   depth: 5
 
 group: travis_latest
-sudo: false

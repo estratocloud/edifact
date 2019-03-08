@@ -4,6 +4,7 @@ namespace Metroplex\Edifact;
 
 use Metroplex\Edifact\Control\Characters as ControlCharacters;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+use Metroplex\Edifact\Exceptions\ParseException;
 use Metroplex\Edifact\Segments\Factory;
 use Metroplex\Edifact\Segments\FactoryInterface;
 use Metroplex\Edifact\Segments\SegmentInterface;
@@ -44,8 +45,9 @@ final class Parser
      * @param ControlCharactersInterface $characters The control characters
      *
      * @return SegmentInterface[]
+     * @throws ParseException
      */
-    public function parse($message, ControlCharactersInterface $characters = null)
+    public function parse(string $message, ControlCharactersInterface $characters = null): iterable
     {
         $tokenizer = new Tokenizer();
 
@@ -67,7 +69,7 @@ final class Parser
      *
      * @return ControlCharactersInterface
      */
-    private function getControlCharacters(&$message, ControlCharactersInterface $characters = null)
+    private function getControlCharacters(string &$message, ControlCharactersInterface $characters = null): ControlCharactersInterface
     {
         if ($characters === null) {
             $characters = new ControlCharacters();
@@ -102,7 +104,7 @@ final class Parser
      *
      * @return SegmentInterface[]
      */
-    private function convertTokensToSegments(array $tokens, ControlCharactersInterface $characters)
+    private function convertTokensToSegments(array $tokens, ControlCharactersInterface $characters): iterable
     {
         $segments = [];
         $currentSegment = -1;

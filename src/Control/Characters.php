@@ -49,7 +49,7 @@ final class Characters implements CharactersInterface
      *
      * @return CharactersInterface
      */
-    private function withControlCharacter($type, $character)
+    private function withControlCharacter(string $type, string $character): CharactersInterface
     {
         if (strlen($character) !== 1) {
             throw new InvalidArgumentException("Control characters must only be a single character");
@@ -65,7 +65,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function withComponentSeparator($character)
+    public function withComponentSeparator(string $character): CharactersInterface
     {
         return $this->withControlCharacter("componentSeparator", $character);
     }
@@ -74,7 +74,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function getComponentSeparator()
+    public function getComponentSeparator(): string
     {
         return $this->componentSeparator;
     }
@@ -83,7 +83,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function withDataSeparator($character)
+    public function withDataSeparator(string $character): CharactersInterface
     {
         return $this->withControlCharacter("dataSeparator", $character);
     }
@@ -92,7 +92,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function getDataSeparator()
+    public function getDataSeparator(): string
     {
         return $this->dataSeparator;
     }
@@ -101,7 +101,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function withDecimalPoint($character)
+    public function withDecimalPoint(string $character): CharactersInterface
     {
         return $this->withControlCharacter("decimalPoint", $character);
     }
@@ -110,7 +110,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function getDecimalPoint()
+    public function getDecimalPoint(): string
     {
         return $this->decimalPoint;
     }
@@ -119,7 +119,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function withEscapeCharacter($character)
+    public function withEscapeCharacter(string $character): CharactersInterface
     {
         return $this->withControlCharacter("escapeCharacter", $character);
     }
@@ -128,7 +128,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function getEscapeCharacter()
+    public function getEscapeCharacter(): string
     {
         return $this->escapeCharacter;
     }
@@ -137,7 +137,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function withSegmentTerminator($character)
+    public function withSegmentTerminator(string $character): CharactersInterface
     {
         return $this->withControlCharacter("segmentTerminator", $character);
     }
@@ -146,7 +146,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function getSegmentTerminator()
+    public function getSegmentTerminator(): string
     {
         return $this->segmentTerminator;
     }
@@ -155,7 +155,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function withReservedSpace($character)
+    public function withReservedSpace(string $character): CharactersInterface
     {
         return $this->withControlCharacter("reservedSpace", $character);
     }
@@ -164,7 +164,7 @@ final class Characters implements CharactersInterface
     /**
      * @inheritDoc
      */
-    public function getReservedSpace()
+    public function getReservedSpace(): string
     {
         return $this->reservedSpace;
     }

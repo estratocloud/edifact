@@ -48,10 +48,12 @@ final class Tokenizer
      * Convert the passed message into tokens.
      *
      * @param string $message The EDI message
+     * @param ControlCharactersInterface $characters
      *
      * @return Token[]
+     * @throws ParseException
      */
-    public function getTokens($message, ControlCharactersInterface $characters)
+    public function getTokens(string $message, ControlCharactersInterface $characters): array
     {
         $this->message = $message;
         $this->characters = $characters;
@@ -74,7 +76,7 @@ final class Tokenizer
      *
      * @return void
      */
-    private function readNextChar()
+    private function readNextChar(): void
     {
         $this->char = $this->getNextChar();
 
@@ -96,7 +98,7 @@ final class Tokenizer
      *
      * @return string
      */
-    private function getNextChar()
+    private function getNextChar(): string
     {
         $char = substr($this->message, $this->position, 1);
         ++$this->position;
@@ -109,8 +111,9 @@ final class Tokenizer
      * Get the next token from the message.
      *
      * @return Token|null
+     * @throws ParseException
      */
-    private function getNextToken()
+    private function getNextToken(): ?Token
     {
         if ($this->endOfMessage()) {
             return null;
@@ -157,7 +160,7 @@ final class Tokenizer
      *
      * @return bool
      */
-    private function isControlCharacter()
+    private function isControlCharacter(): bool
     {
         if ($this->isEscaped) {
             return false;
@@ -184,7 +187,7 @@ final class Tokenizer
      *
      * @return void
      */
-    private function storeCurrentCharAndReadNext()
+    private function storeCurrentCharAndReadNext(): void
     {
         $this->string .= $this->char;
         $this->readNextChar();
@@ -196,7 +199,7 @@ final class Tokenizer
      *
      * @return string
      */
-    private function extractStoredChars()
+    private function extractStoredChars(): string
     {
         $string = $this->string;
 
@@ -211,7 +214,7 @@ final class Tokenizer
      *
      * @return bool
      */
-    private function endOfMessage()
+    private function endOfMessage(): bool
     {
         return strlen($this->char) == 0;
     }

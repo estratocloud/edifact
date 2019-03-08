@@ -22,9 +22,9 @@ abstract class AbstractSegment implements SegmentInterface
      * Create a new instance.
      *
      * @param string $code The code of the segment.
-     * @param array $elements The data elements for this segment.
+     * @param mixed ...$elements The data elements for this segment.
      */
-    public function __construct($code, ...$elements)
+    public function __construct(string $code, ...$elements)
     {
         $this->code = $code;
         $this->elements = $elements;
@@ -36,7 +36,7 @@ abstract class AbstractSegment implements SegmentInterface
      *
      * @return string
      */
-    public function getSegmentCode()
+    public function getSegmentCode(): string
     {
         return $this->code;
     }
@@ -47,7 +47,7 @@ abstract class AbstractSegment implements SegmentInterface
      *
      * @return array
      */
-    public function getAllElements()
+    public function getAllElements(): array
     {
         return $this->elements;
     }
@@ -58,12 +58,12 @@ abstract class AbstractSegment implements SegmentInterface
      *
      * @param int $key The element to get
      *
-     * @return mixed
+     * @return mixed|null
      */
-    public function getElement($key)
+    public function getElement(int $key)
     {
         if (!isset($this->elements[$key])) {
-            return;
+            return null;
         }
 
         return $this->elements[$key];

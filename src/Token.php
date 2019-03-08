@@ -9,10 +9,18 @@ final class Token
     const DATA_SEPARATOR        =   13;
     const TERMINATOR            =   14;
 
+    /** @var int */
     public $type;
+
+    /** @var string */
     public $value;
 
-    public function __construct($type, $value)
+
+    /**
+     * @param int $type
+     * @param string $value
+     */
+    public function __construct(int $type, string $value)
     {
         $this->type = $type;
         $this->value = $value;

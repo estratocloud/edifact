@@ -12,7 +12,7 @@ interface SegmentInterface
      *
      * @return string
      */
-    public function getSegmentCode();
+    public function getSegmentCode(): string;
 
 
     /**
@@ -20,7 +20,7 @@ interface SegmentInterface
      *
      * @return array
      */
-    public function getAllElements();
+    public function getAllElements(): array;
 
 
     /**
@@ -30,5 +30,5 @@ interface SegmentInterface
      *
      * @return mixed
      */
-    public function getElement($key);
+    public function getElement(int $key);
 }

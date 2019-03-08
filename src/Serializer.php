@@ -20,6 +20,10 @@ final class Serializer
      */
     private $characters;
 
+
+    /**
+     * @param ControlCharactersInterface|null $characters
+     */
     public function __construct(ControlCharactersInterface $characters = null)
     {
         if ($characters === null) {
@@ -32,11 +36,11 @@ final class Serializer
     /**
      * Serialize all the passed segments.
      *
-     * @param SegmentInterface[] $segments The segments to serialize
+     * @param SegmentInterface ...$segments The segments to serialize
      *
      * @return string
      */
-    public function serialize(SegmentInterface ...$segments)
+    public function serialize(SegmentInterface ...$segments): string
     {
         $message = "UNA";
         $message .= $this->characters->getComponentSeparator();
@@ -72,7 +76,7 @@ final class Serializer
      *
      * @return string
      */
-    private function escape($string)
+    private function escape(string $string): string
     {
         $characters = [
             $this->characters->getEscapeCharacter(),

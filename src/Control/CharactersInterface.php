@@ -12,9 +12,9 @@ interface CharactersInterface
      *
      * @param string $character The character to use
      *
-     * @return CharactersInterface
+     * @return self
      */
-    public function withComponentSeparator($character);
+    public function withComponentSeparator(string $character): self;
 
 
     /**
@@ -22,7 +22,7 @@ interface CharactersInterface
      *
      * @return string
      */
-    public function getComponentSeparator();
+    public function getComponentSeparator(): string;
 
 
     /**
@@ -30,9 +30,9 @@ interface CharactersInterface
      *
      * @param string $character The character to use
      *
-     * @return CharactersInterface
+     * @return self
      */
-    public function withDataSeparator($character);
+    public function withDataSeparator(string $character): self;
 
 
     /**
@@ -40,7 +40,7 @@ interface CharactersInterface
      *
      * @return string
      */
-    public function getDataSeparator();
+    public function getDataSeparator(): string;
 
 
     /**
@@ -48,9 +48,9 @@ interface CharactersInterface
      *
      * @param string $character The character to use
      *
-     * @return CharactersInterface
+     * @return self
      */
-    public function withDecimalPoint($character);
+    public function withDecimalPoint(string $character): self;
 
 
     /**
@@ -58,7 +58,7 @@ interface CharactersInterface
      *
      * @return string
      */
-    public function getDecimalPoint();
+    public function getDecimalPoint(): string;
 
 
     /**
@@ -66,9 +66,9 @@ interface CharactersInterface
      *
      * @param string $character The character to use
      *
-     * @return CharactersInterface
+     * @return self
      */
-    public function withEscapeCharacter($character);
+    public function withEscapeCharacter(string $character): self;
 
 
     /**
@@ -76,7 +76,7 @@ interface CharactersInterface
      *
      * @return string
      */
-    public function getEscapeCharacter();
+    public function getEscapeCharacter(): string;
 
 
     /**
@@ -84,9 +84,9 @@ interface CharactersInterface
      *
      * @param string $character The character to use
      *
-     * @return CharactersInterface
+     * @return self
      */
-    public function withSegmentTerminator($character);
+    public function withSegmentTerminator(string $character): self;
 
 
     /**
@@ -94,7 +94,7 @@ interface CharactersInterface
      *
      * @return string
      */
-    public function getSegmentTerminator();
+    public function getSegmentTerminator(): string;
 
 
     /**
@@ -102,9 +102,9 @@ interface CharactersInterface
      *
      * @param string $character The character to use
      *
-     * @return CharactersInterface
+     * @return self
      */
-    public function withReservedSpace($character);
+    public function withReservedSpace(string $character): self;
 
 
     /**
@@ -112,5 +112,5 @@ interface CharactersInterface
      *
      * @return string
      */
-    public function getReservedSpace();
+    public function getReservedSpace(): string;
 }

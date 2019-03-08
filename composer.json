@@ -29,5 +29,15 @@
     },
     "autoload-dev": {
         "psr-4": {"Metroplex\\EdifactTests\\": "tests/"}
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit",
+            "vendor/bin/composer-require-checker",
+            "vendor/bin/phpstan analyse --level=max src",
+            "vendor/bin/phpstan analyse --level=max --configuration=phpstan-tests.neon tests",
+            "vendor/bin/phpcs --standard=phpcs.xml src tests",
+            "@composer validate --strict"
+        ]
     }
 }

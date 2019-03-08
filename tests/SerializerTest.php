@@ -4,15 +4,16 @@ namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Segments\Segment;
 use Metroplex\Edifact\Serializer;
+use PHPUnit\Framework\TestCase;
 
-class SerializerTest extends \PHPUnit_Framework_TestCase
+class SerializerTest extends TestCase
 {
     /**
      * @var Serializer $serializer The instance we are testing.
      */
     private $serializer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->serializer = new Serializer;
     }

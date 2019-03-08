@@ -8,15 +8,16 @@ use Metroplex\Edifact\Parser;
 use Metroplex\Edifact\Segments\Segment;
 use Mockery;
 use function iterator_to_array;
+use PHPUnit\Framework\TestCase;
 
-class ParserTest extends \PHPUnit_Framework_TestCase
+class ParserTest extends TestCase
 {
     /**
      * @var Parser $parser The instance we are testing.
      */
     private $parser;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->parser = new Parser;
     }

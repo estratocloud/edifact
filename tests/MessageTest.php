@@ -5,13 +5,15 @@ namespace Metroplex\EdifactTests;
 use Metroplex\Edifact\Message;
 use Metroplex\Edifact\Segments\Segment;
 use function iterator_to_array;
+use PHPUnit\Framework\TestCase;
 
-class MessageTest extends \PHPUnit_Framework_TestCase
+class MessageTest extends TestCase
 {
 
     public function testFromFile()
     {
-        $this->setExpectedException("InvalidArgumentException", "Unable to read the file: /no/such/file");
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Unable to read the file: /no/such/file");
         error_reporting(\E_ALL ^ \E_WARNING);
         Message::fromFile("/no/such/file");
     }

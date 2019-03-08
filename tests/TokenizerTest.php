@@ -6,15 +6,16 @@ use Metroplex\Edifact\Control\Characters as ControlCharacters;
 use Metroplex\Edifact\Exceptions\ParseException;
 use Metroplex\Edifact\Token;
 use Metroplex\Edifact\Tokenizer;
+use PHPUnit\Framework\TestCase;
 
-class TokenizerTest extends \PHPUnit_Framework_TestCase
+class TokenizerTest extends TestCase
 {
     /**
      * @var Tokenizer $tokenizer The instance we are testing.
      */
     private $tokenizer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->tokenizer = new Tokenizer;
     }
@@ -95,7 +96,8 @@ class TokenizerTest extends \PHPUnit_Framework_TestCase
 
     public function testNoTerminator()
     {
-        $this->setExpectedException(ParseException::class, "Unexpected end of EDI message");
+        $this->expectException(ParseException::class);
+        $this->expectExceptionMessage("Unexpected end of EDI message");
         $this->tokenizer->getTokens("TEST", new ControlCharacters);
     }
 }

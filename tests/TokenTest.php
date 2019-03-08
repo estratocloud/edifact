@@ -3,8 +3,9 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Token;
+use PHPUnit\Framework\TestCase;
 
-class TokenTest extends \PHPUnit_Framework_TestCase
+class TokenTest extends TestCase
 {
 
     public function testType()

@@ -3,16 +3,17 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Message;
+use PHPUnit\Framework\TestCase;
 use function extension_loaded;
 use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
 
-class PerformanceTest extends \PHPUnit_Framework_TestCase
+class PerformanceTest extends TestCase
 {
     private $tmp = __DIR__ . "/data/tmp.edi";
 
-    public function setUp()
+    public function setUp(): void
     {
         if (extension_loaded("xdebug")) {
             $this->markTestSkipped("Cannot test performance as xdebug makes things slow");
@@ -27,7 +28,7 @@ class PerformanceTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function tearDown()
+    public function tearDown(): void
     {
         if (file_exists($this->tmp)) {
             unlink($this->tmp);

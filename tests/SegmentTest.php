@@ -3,8 +3,9 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Segments\Segment;
+use PHPUnit\Framework\TestCase;
 
-class SegmentTest extends \PHPUnit_Framework_TestCase
+class SegmentTest extends TestCase
 {
 
     public function testGetSegmentCode()

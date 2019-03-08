@@ -5,8 +5,9 @@ namespace Metroplex\EdifactTests;
 use Metroplex\Edifact\Exceptions\Exception;
 use function glob;
 use function pathinfo;
+use PHPUnit\Framework\TestCase;
 
-class ExceptionTest extends \PHPUnit_Framework_TestCase
+class ExceptionTest extends TestCase
 {
 
     public function exceptionProvider()

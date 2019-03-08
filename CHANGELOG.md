@@ -5,6 +5,18 @@ Changelog
 
 --------
 
+## 2.0.0 - 2019-03-08
+
+### Changed
+
+* Added parameter types and return types where possible.
+* [Support] Added support for PHP 7.3
+* [Support] Dropped support for PHP 5.6
+* [Support] Dropped support for PHP 7.0
+* [Support] Dropped support for PHP 7.1
+
+--------
+
 ## 1.1.0 - 2018-06-25
 
 ### Changed

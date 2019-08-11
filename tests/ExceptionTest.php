@@ -3,7 +3,9 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Exceptions\Exception;
+use function assert;
 use function glob;
+use function is_array;
 use function pathinfo;
 use PHPUnit\Framework\TestCase;
 
@@ -13,6 +15,8 @@ class ExceptionTest extends TestCase
     public function exceptionProvider()
     {
         $files = glob(__DIR__ . "/../src/Exceptions/*.php");
+        assert(is_array($files));
+
         foreach ($files as $file) {
             yield [$file];
         }

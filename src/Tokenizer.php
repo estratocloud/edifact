@@ -24,11 +24,6 @@ final class Tokenizer
     private $position = 0;
 
     /**
-     * @var ControlCharactersInterface $character The control characters for the message.
-     */
-    private $characters;
-
-    /**
      * @var string $char The current character from the message we are dealing with.
      */
     private $char = "";
@@ -43,6 +38,13 @@ final class Tokenizer
      */
     private $isEscaped = false;
 
+    private $isControlCharacter = false;
+
+    private $controlCharacters = [];
+    private $escapeCharacter = null;
+    private $componentSeparator = null;
+    private $dataSeparator = null;
+    private $segmentTerminator = null;
 
     /**
      * Convert the passed message into tokens.
@@ -56,7 +58,15 @@ final class Tokenizer
     public function getTokens(string $message, ControlCharactersInterface $characters): array
     {
         $this->message = $message;
-        $this->characters = $characters;
+        $this->escapeCharacter = $characters->getEscapeCharacter();
+        $this->componentSeparator = $characters->getComponentSeparator();
+        $this->dataSeparator = $characters->getDataSeparator();
+        $this->segmentTerminator = $characters->getSegmentTerminator();
+        $this->controlCharacters = [
+            $this->componentSeparator,
+            $this->dataSeparator,
+            $this->segmentTerminator
+        ];
         $this->char = "";
         $this->string = "";
 
@@ -80,15 +90,14 @@ final class Tokenizer
     {
         $this->char = $this->getNextChar();
 
-        # If the last character was escaped, this one can't possibly be
-        if ($this->isEscaped) {
-            $this->isEscaped = false;
-        }
-
         # If this is the escape character, then read the next one and flag the next as escaped
-        if ($this->char === $this->characters->getEscapeCharacter()) {
+        if ($this->char === $this->escapeCharacter) {
             $this->char = $this->getNextChar();
             $this->isEscaped = true;
+            $this->isControlCharacter = false;
+        } else {
+            $this->isEscaped = false;
+            $this->isControlCharacter = in_array($this->char, $this->controlCharacters);
         }
     }
 
@@ -121,17 +130,17 @@ final class Tokenizer
 
         # If we're not escaping this character then see if it's a control character
         if (!$this->isEscaped) {
-            if ($this->char === $this->characters->getComponentSeparator()) {
+            if ($this->char === $this->componentSeparator) {
                 $this->storeCurrentCharAndReadNext();
                 return new Token(Token::COMPONENT_SEPARATOR, $this->extractStoredChars());
             }
 
-            if ($this->char === $this->characters->getDataSeparator()) {
+            if ($this->char === $this->dataSeparator) {
                 $this->storeCurrentCharAndReadNext();
                 return new Token(Token::DATA_SEPARATOR, $this->extractStoredChars());
             }
 
-            if ($this->char === $this->characters->getSegmentTerminator()) {
+            if ($this->char === $this->segmentTerminator) {
                 $this->storeCurrentCharAndReadNext();
                 $token = new Token(Token::TERMINATOR, $this->extractStoredChars());
 
@@ -144,7 +153,7 @@ final class Tokenizer
             }
         }
 
-        while (!$this->isControlCharacter()) {
+        while (!$this->isControlCharacter) {
             if ($this->endOfMessage()) {
                 throw new ParseException("Unexpected end of EDI message");
             }
@@ -166,15 +175,15 @@ final class Tokenizer
             return false;
         }
 
-        if ($this->char === $this->characters->getComponentSeparator()) {
+        if ($this->char === $this->componentSeparator) {
             return true;
         }
 
-        if ($this->char === $this->characters->getDataSeparator()) {
+        if ($this->char === $this->dataSeparator) {
             return true;
         }
 
-        if ($this->char === $this->characters->getSegmentTerminator()) {
+        if ($this->char === $this->segmentTerminator) {
             return true;
         }
 

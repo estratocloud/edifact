@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    build: .
+    volumes:
+      - .:/var/app
+      - ~/.composer/auth.json:/var/app/auth.json
+    tty: true

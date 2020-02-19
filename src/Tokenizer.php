@@ -88,11 +88,13 @@ final class Tokenizer
      */
     private function readNextChar(): void
     {
-        $this->char = $this->getNextChar();
+        $this->char = substr($this->message, $this->position, 1);
+        ++$this->position;
 
         # If this is the escape character, then read the next one and flag the next as escaped
         if ($this->char === $this->escapeCharacter) {
-            $this->char = $this->getNextChar();
+            $this->char = substr($this->message, $this->position, 1);
+            ++$this->position;
             $this->isEscaped = true;
             $this->isControlCharacter = false;
         } else {

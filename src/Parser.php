@@ -18,7 +18,7 @@ use function substr;
 /**
  * Parse EDI messages into an array of segments.
  */
-final class Parser
+final class Parser implements ParserInterface
 {
     /**
      * @var FactoryInterface $factory A segment factory for creating segments.

@@ -14,7 +14,7 @@ use function str_replace;
 /**
  * Serialize a bunch of segments into an EDI message string.
  */
-final class Serializer
+final class Serializer implements SerializerInterface
 {
     /**
      * @var ControlCharactersInterface $characters The control characters to use when serializing.

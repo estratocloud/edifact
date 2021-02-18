@@ -5,6 +5,14 @@ Changelog
 
 --------
 
+## 2.1.0 - 2021-02-18
+
+### Added
+
+* Added interfaces for the Message, Parser, and Seralizer classes.
+
+--------
+
 ## 2.0.0 - 2019-03-08
 
 ### Changed

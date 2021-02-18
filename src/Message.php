@@ -9,7 +9,7 @@ use Metroplex\Edifact\Segments\SegmentInterface;
 /**
  * Represent an EDI message for both reading and writing.
  */
-final class Message
+final class Message implements MessageInterface
 {
     /**
      * @var SegmentInterface[] $segments The segments that make up this message.
@@ -116,7 +116,7 @@ final class Message
      *
      * @return $this
      */
-    public function addSegments(SegmentInterface ...$segments): self
+    public function addSegments(SegmentInterface ...$segments): MessageInterface
     {
         foreach ($segments as $segment) {
             $this->addSegment($segment);
@@ -133,7 +133,7 @@ final class Message
      *
      * @return $this
      */
-    public function addSegment(SegmentInterface $segment): self
+    public function addSegment(SegmentInterface $segment): MessageInterface
     {
         $this->segments[] = $segment;
 

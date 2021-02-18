@@ -25,7 +25,7 @@ final class Tokenizer
     private $position = 0;
 
     /**
-     * @var ControlCharactersInterface $character The control characters for the message.
+     * @var ControlCharactersInterface $characters The control characters for the message.
      */
     private $characters;
 

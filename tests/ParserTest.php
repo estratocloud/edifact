@@ -6,6 +6,7 @@ use duncan3dc\ObjectIntruder\Intruder;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Parser;
 use Metroplex\Edifact\Segments\Segment;
+use Metroplex\Edifact\Segments\SegmentInterface;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +26,7 @@ class ParserTest extends TestCase
     }
 
 
-    public function getControlCharacters(&$message, ControlCharactersInterface $characters = null)
+    public function getControlCharacters(string &$message, ControlCharactersInterface $characters = null): void
     {
         if ($characters === null) {
             $characters = Mockery::mock(ControlCharactersInterface::class);
@@ -39,7 +40,7 @@ class ParserTest extends TestCase
 
         $parser = new Intruder($this->parser);
 
-        return $parser->_call("getControlCharacters", $message, $characters);
+        $parser->_call("getControlCharacters", $message, $characters);
     }
 
 
@@ -91,7 +92,11 @@ class ParserTest extends TestCase
     }
 
 
-    private function assertSegments($message, array $segments)
+    /**
+     * @param string $message
+     * @param array<SegmentInterface> $segments
+     */
+    private function assertSegments(string $message, array $segments): void
     {
         $input = "UNA:+,? '\n";
         $input .= $message . "'\n";

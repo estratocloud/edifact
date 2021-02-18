@@ -13,7 +13,7 @@ abstract class AbstractSegment implements SegmentInterface
     private $code;
 
     /**
-     * @var array $elements The data elements for this segment.
+     * @var array<mixed> $elements The data elements for this segment.
      */
     private $elements;
 
@@ -45,7 +45,7 @@ abstract class AbstractSegment implements SegmentInterface
     /**
      * Get all the elements from the segment.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getAllElements(): array
     {

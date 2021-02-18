@@ -1,3 +1,7 @@
+parameters:
+	ignoreErrors:
+		- '/^Parameter \#1 .* of class ReflectionClass constructor expects .*, string given\.$/'
+
 includes:
 	- vendor/phpstan/phpstan-mockery/extension.neon
 	- vendor/phpstan/phpstan-phpunit/extension.neon

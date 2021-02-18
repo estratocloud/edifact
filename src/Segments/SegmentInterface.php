@@ -18,7 +18,7 @@ interface SegmentInterface
     /**
      * Get all the elements from the segment.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getAllElements(): array;
 

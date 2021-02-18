@@ -20,7 +20,12 @@ class TokenizerTest extends TestCase
         $this->tokenizer = new Tokenizer();
     }
 
-    private function assertTokens($message, array $expected)
+
+    /**
+     * @param string $message
+     * @param array<Token> $expected
+     */
+    private function assertTokens(string $message, array $expected): void
     {
         $tokens = $this->tokenizer->getTokens("{$message}'", new ControlCharacters());
 

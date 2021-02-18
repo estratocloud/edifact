@@ -13,7 +13,11 @@ use function pathinfo;
 class ExceptionTest extends TestCase
 {
 
-    public function exceptionProvider()
+
+    /**
+     * @return iterable<array>
+     */
+    public function exceptionProvider(): iterable
     {
         $files = glob(__DIR__ . "/../src/Exceptions/*.php");
         assert(is_array($files));
@@ -22,6 +26,8 @@ class ExceptionTest extends TestCase
             yield [$file];
         }
     }
+
+
     /**
      * @dataProvider exceptionProvider
      */

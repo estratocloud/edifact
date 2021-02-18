@@ -11,13 +11,18 @@ use function str_replace;
 class InAndOutTest extends TestCase
 {
 
-    public function messageProvider()
+    /**
+     * @return iterable<array>
+     */
+    public function messageProvider(): iterable
     {
         $path = __DIR__ . "/data";
         yield ["{$path}/multibyte.edi"];
         yield ["{$path}/order.edi"];
         yield ["{$path}/wikipedia.edi"];
     }
+
+
     /**
      * @dataProvider messageProvider
      */

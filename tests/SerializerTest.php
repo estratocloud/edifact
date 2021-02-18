@@ -3,6 +3,7 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Segments\Segment;
+use Metroplex\Edifact\Segments\SegmentInterface;
 use Metroplex\Edifact\Serializer;
 use PHPUnit\Framework\TestCase;
 
@@ -18,7 +19,12 @@ class SerializerTest extends TestCase
         $this->serializer = new Serializer();
     }
 
-    private function assertSegments($expected, array $segments)
+
+    /**
+     * @param string $expected
+     * @param array<SegmentInterface> $segments
+     */
+    private function assertSegments(string $expected, array $segments): void
     {
         $expected = "UNA:+,? '" . $expected . "'";
 

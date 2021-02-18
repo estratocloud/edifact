@@ -12,6 +12,7 @@ use function file_put_contents;
 
 class PerformanceTest extends TestCase
 {
+    /** @var string */
     private $tmp = __DIR__ . "/data/tmp.edi";
 
     public function setUp(): void

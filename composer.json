@@ -12,7 +12,7 @@
         "role": "Developer"
     }],
     "require": {
-        "php": "^7.2"
+        "php": "^7.3"
     },
     "require-dev": {
         "duncan3dc/object-intruder": "^0.3.0",

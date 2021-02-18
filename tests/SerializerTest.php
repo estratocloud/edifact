@@ -28,13 +28,13 @@ class SerializerTest extends TestCase
     }
 
 
-    public function testBasic1()
+    public function testBasic1(): void
     {
         $this->assertSegments("RFF+PD:50515", [
             new Segment("RFF", ["PD", "50515"]),
         ]);
     }
-    public function testBasic2()
+    public function testBasic2(): void
     {
         $this->assertSegments("RFF+PD+50515", [
             new Segment("RFF", "PD", "50515"),
@@ -42,7 +42,7 @@ class SerializerTest extends TestCase
     }
 
 
-    public function testEscapeCharacter()
+    public function testEscapeCharacter(): void
     {
         $this->assertSegments("ERC+10:The message does not make sense??", [
             new Segment("ERC", ["10", "The message does not make sense?"]),
@@ -50,7 +50,7 @@ class SerializerTest extends TestCase
     }
 
 
-    public function testEscapeComponentSeparator()
+    public function testEscapeComponentSeparator(): void
     {
         $this->assertSegments("ERC+10:Name?: Craig", [
             new Segment("ERC", ["10", "Name: Craig"]),
@@ -58,7 +58,7 @@ class SerializerTest extends TestCase
     }
 
 
-    public function testEscapeDataSeparator()
+    public function testEscapeDataSeparator(): void
     {
         $this->assertSegments("DTM+735:?+0000:406", [
             new Segment("DTM", ["735", "+0000", "406"]),
@@ -66,7 +66,7 @@ class SerializerTest extends TestCase
     }
 
 
-    public function testEscapeDecimalPoint()
+    public function testEscapeDecimalPoint(): void
     {
         $this->assertSegments("QTY+136:12,235", [
             new Segment("QTY", ["136", "12,235"]),
@@ -74,7 +74,7 @@ class SerializerTest extends TestCase
     }
 
 
-    public function testEscapeSegmentTerminator()
+    public function testEscapeSegmentTerminator(): void
     {
         $this->assertSegments("ERC+10:Craig?'s", [
             new Segment("ERC", ["10", "Craig's"]),
@@ -82,7 +82,7 @@ class SerializerTest extends TestCase
     }
 
 
-    public function testEscapeSequence()
+    public function testEscapeSequence(): void
     {
         $this->assertSegments("ERC+10:?:?+???' - ?:?+???' - ?:?+???'", [
             new Segment("ERC", ["10", ":+?' - :+?' - :+?'"]),

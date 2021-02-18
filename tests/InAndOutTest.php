@@ -21,7 +21,7 @@ class InAndOutTest extends TestCase
     /**
      * @dataProvider messageProvider
      */
-    public function testFormat($file)
+    public function testFormat(string $file): void
     {
         $output = (string) Message::fromFile($file);
 

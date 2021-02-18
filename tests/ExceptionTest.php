@@ -25,7 +25,7 @@ class ExceptionTest extends TestCase
     /**
      * @dataProvider exceptionProvider
      */
-    public function testExceptionInterface($file)
+    public function testExceptionInterface(string $file): void
     {
         $className = pathinfo($file, \PATHINFO_FILENAME);
         $class = "Metroplex\\Edifact\\Exceptions\\{$className}";

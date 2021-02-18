@@ -30,7 +30,7 @@ class TokenizerTest extends TestCase
     }
 
 
-    public function testBasic()
+    public function testBasic(): void
     {
         $this->assertTokens("RFF+PD:50515", [
             new Token(Token::CONTENT, "RFF"),
@@ -42,7 +42,7 @@ class TokenizerTest extends TestCase
     }
 
 
-    public function testEscape()
+    public function testEscape(): void
     {
         $this->assertTokens("RFF+PD?:5", [
             new Token(Token::CONTENT, "RFF"),
@@ -50,7 +50,7 @@ class TokenizerTest extends TestCase
             new Token(Token::CONTENT, "PD:5"),
         ]);
     }
-    public function testDoubleEscape()
+    public function testDoubleEscape(): void
     {
         $this->assertTokens("RFF+PD??:5", [
             new Token(Token::CONTENT, "RFF"),
@@ -60,7 +60,7 @@ class TokenizerTest extends TestCase
             new Token(Token::CONTENT, "5"),
         ]);
     }
-    public function testTripleEscape()
+    public function testTripleEscape(): void
     {
         $this->assertTokens("RFF+PD???:5", [
             new Token(Token::CONTENT, "RFF"),
@@ -68,7 +68,7 @@ class TokenizerTest extends TestCase
             new Token(Token::CONTENT, "PD?:5"),
         ]);
     }
-    public function testQuadrupleEscape()
+    public function testQuadrupleEscape(): void
     {
         $this->assertTokens("RFF+PD????:5", [
             new Token(Token::CONTENT, "RFF"),
@@ -80,7 +80,7 @@ class TokenizerTest extends TestCase
     }
 
 
-    public function testIgnoreWhitespace()
+    public function testIgnoreWhitespace(): void
     {
         $this->assertTokens("RFF:5'\nDEF:6", [
             new Token(Token::CONTENT, "RFF"),
@@ -94,7 +94,7 @@ class TokenizerTest extends TestCase
     }
 
 
-    public function testNoTerminator()
+    public function testNoTerminator(): void
     {
         $this->expectException(ParseException::class);
         $this->expectExceptionMessage("Unexpected end of EDI message");

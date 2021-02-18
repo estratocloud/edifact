@@ -12,7 +12,7 @@ use function iterator_to_array;
 class MessageTest extends TestCase
 {
 
-    public function testFromFile()
+    public function testFromFile(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage("Unable to read the file: /no/such/file");
@@ -21,14 +21,14 @@ class MessageTest extends TestCase
     }
 
 
-    public function testCreateWithSegments()
+    public function testCreateWithSegments(): void
     {
         $message = Message::fromSegments(new Segment("36CF"));
         $this->assertEquals([new Segment("36CF")], $message->getAllSegments());
     }
 
 
-    public function testGetSegments()
+    public function testGetSegments(): void
     {
         $message = Message::fromSegments(
             new Segment("36CF", 1),
@@ -46,7 +46,7 @@ class MessageTest extends TestCase
     }
 
 
-    public function testGetSegmentsDoesntExist()
+    public function testGetSegmentsDoesntExist(): void
     {
         $message = new Message();
 
@@ -57,7 +57,7 @@ class MessageTest extends TestCase
     }
 
 
-    public function testGetSegment()
+    public function testGetSegment(): void
     {
         $message = Message::fromSegments(
             new Segment("36CF", 1),
@@ -70,7 +70,7 @@ class MessageTest extends TestCase
     }
 
 
-    public function testGetSegmentDoesntExist()
+    public function testGetSegmentDoesntExist(): void
     {
         $message = new Message();
 

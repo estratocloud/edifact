@@ -37,7 +37,7 @@ class PerformanceTest extends TestCase
     }
 
 
-    public function testTokenizerPerformance()
+    public function testTokenizerPerformance(): void
     {
         $start = time();
 

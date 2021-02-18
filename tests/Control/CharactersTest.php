@@ -18,14 +18,14 @@ class CharactersTest extends TestCase
         $this->characters = new Characters();
     }
 
-    public function testInvalidControlCharacter1()
+    public function testInvalidControlCharacter1(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("Control characters must only be a single character");
         $this->characters->withComponentSeparator("[]");
     }
 
-    public function testInvalidControlCharacter2()
+    public function testInvalidControlCharacter2(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("Control characters must only be a single character");

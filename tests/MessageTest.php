@@ -2,11 +2,12 @@
 
 namespace Metroplex\EdifactTests;
 
-use function is_array;
 use Metroplex\Edifact\Message;
 use Metroplex\Edifact\Segments\Segment;
-use function iterator_to_array;
 use PHPUnit\Framework\TestCase;
+
+use function is_array;
+use function iterator_to_array;
 
 class MessageTest extends TestCase
 {

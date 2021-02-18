@@ -3,11 +3,12 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Exceptions\Exception;
+use PHPUnit\Framework\TestCase;
+
 use function assert;
 use function glob;
 use function is_array;
 use function pathinfo;
-use PHPUnit\Framework\TestCase;
 
 class ExceptionTest extends TestCase
 {

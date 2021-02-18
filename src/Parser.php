@@ -8,6 +8,7 @@ use Metroplex\Edifact\Exceptions\ParseException;
 use Metroplex\Edifact\Segments\Factory;
 use Metroplex\Edifact\Segments\FactoryInterface;
 use Metroplex\Edifact\Segments\SegmentInterface;
+
 use function array_shift;
 use function is_array;
 use function is_string;

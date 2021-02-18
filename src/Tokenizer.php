@@ -4,6 +4,7 @@ namespace Metroplex\Edifact;
 
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Exceptions\ParseException;
+
 use function in_array;
 use function strlen;
 use function substr;

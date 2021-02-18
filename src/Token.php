@@ -4,10 +4,10 @@ namespace Metroplex\Edifact;
 
 final class Token
 {
-    const CONTENT               =   11;
-    const COMPONENT_SEPARATOR   =   12;
-    const DATA_SEPARATOR        =   13;
-    const TERMINATOR            =   14;
+    public const CONTENT               =   11;
+    public const COMPONENT_SEPARATOR   =   12;
+    public const DATA_SEPARATOR        =   13;
+    public const TERMINATOR            =   14;
 
     /** @var int */
     public $type;

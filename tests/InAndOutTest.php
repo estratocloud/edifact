@@ -3,8 +3,9 @@
 namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Message;
-use function file_get_contents;
 use PHPUnit\Framework\TestCase;
+
+use function file_get_contents;
 use function str_replace;
 
 class InAndOutTest extends TestCase

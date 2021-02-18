@@ -3,13 +3,14 @@
 namespace Metroplex\EdifactTests;
 
 use duncan3dc\ObjectIntruder\Intruder;
-use function is_array;
 use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Metroplex\Edifact\Parser;
 use Metroplex\Edifact\Segments\Segment;
 use Mockery;
-use function iterator_to_array;
 use PHPUnit\Framework\TestCase;
+
+use function is_array;
+use function iterator_to_array;
 
 class ParserTest extends TestCase
 {

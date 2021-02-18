@@ -4,6 +4,7 @@ namespace Metroplex\EdifactTests;
 
 use Metroplex\Edifact\Message;
 use PHPUnit\Framework\TestCase;
+
 use function extension_loaded;
 use function file_exists;
 use function file_get_contents;

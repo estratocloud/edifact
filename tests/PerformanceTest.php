@@ -2,6 +2,8 @@
 
 namespace Metroplex\EdifactTests;
 
+use duncan3dc\PhpIni\Ini;
+use duncan3dc\PhpIni\Settings;
 use Metroplex\Edifact\Message;
 use PHPUnit\Framework\TestCase;
 
@@ -15,11 +17,22 @@ class PerformanceTest extends TestCase
     /** @var string */
     private $tmp = __DIR__ . "/data/tmp.edi";
 
+    /** @var Ini */
+    private $ini;
+
+
     public function setUp(): void
     {
         if (extension_loaded("xdebug")) {
             $this->markTestSkipped("Cannot test performance as xdebug makes things slow");
         }
+        if (extension_loaded("pcov")) {
+            $this->markTestSkipped("Cannot test performance as pcov makes use too much memory");
+        }
+
+        # Allow this test to use up to 512mb of memory
+        $this->ini = new Ini();
+        $this->ini->set(Settings::MEMORY_LIMIT, (string) (512 * 1024 * 1024));
 
         $data = file_get_contents(__DIR__ . "/data/wikipedia.edi");
 
@@ -35,6 +48,7 @@ class PerformanceTest extends TestCase
         if (file_exists($this->tmp)) {
             unlink($this->tmp);
         }
+        $this->ini->cleanup();
     }
 
 

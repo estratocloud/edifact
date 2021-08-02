@@ -16,6 +16,13 @@ final class Message implements MessageInterface
      */
     private $segments = [];
 
+    private SerializerInterface $serializer;
+
+    public function __construct(SerializerInterface $serializer = null)
+    {
+        $this->serializer = $serializer ?? new Serializer();
+    }
+
 
     /**
      * Create a new instance from a file.
@@ -148,7 +155,7 @@ final class Message implements MessageInterface
      */
     public function serialize(): string
     {
-        return (new Serializer())->serialize(...$this->getAllSegments());
+        return $this->serializer->serialize(...$this->getAllSegments());
     }
 
 

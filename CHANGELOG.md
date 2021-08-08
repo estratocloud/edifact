@@ -5,6 +5,15 @@ Changelog
 
 --------
 
+## 2.2.0 - 2021-08-08
+
+### Changed
+
+* [Support] Added support for PHP 8.0
+* [Support] Dropped support for PHP 7.3
+
+--------
+
 ## 2.1.0 - 2021-02-18
 
 ### Added

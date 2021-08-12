@@ -48,7 +48,7 @@ final class Serializer implements SerializerInterface
         $message .= $this->characters->getDataSeparator();
         $message .= $this->characters->getDecimalPoint();
         $message .= $this->characters->getEscapeCharacter();
-        $message .= " ";
+        $message .= $this->characters->getReservedSpace();
         $message .= $this->characters->getSegmentTerminator();
 
         foreach ($segments as $segment) {

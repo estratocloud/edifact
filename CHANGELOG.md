@@ -5,6 +5,14 @@ Changelog
 
 --------
 
+## 2.2.1 - 2021-08-12
+
+### Fixed
+
+* [Serializer] Ensure we use a custom reserved character if one was provided.
+
+--------
+
 ## 2.2.0 - 2021-08-08
 
 ### Changed

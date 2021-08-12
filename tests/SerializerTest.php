@@ -2,6 +2,7 @@
 
 namespace Metroplex\EdifactTests;
 
+use Metroplex\Edifact\Control\Characters;
 use Metroplex\Edifact\Segments\Segment;
 use Metroplex\Edifact\Segments\SegmentInterface;
 use Metroplex\Edifact\Serializer;
@@ -85,6 +86,15 @@ class SerializerTest extends TestCase
         $this->assertSegments("ERC+10:Craig?'s", [
             new Segment("ERC", ["10", "Craig's"]),
         ]);
+    }
+
+
+    public function testReservedSpace(): void
+    {
+        $characters = (new Characters())->withReservedSpace("*");
+        $serializer = new Serializer($characters);
+        $message = $serializer->serialize();
+        $this->assertSame("UNA:+,?*'", $message);
     }
 
 

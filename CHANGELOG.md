@@ -5,6 +5,15 @@ Changelog
 
 --------
 
+## 3.0.0 - 2022-01-22
+
+### Changed
+
+* Project moved to Estrato namespace.
+* [Support] Added support for PHP 8.1.
+
+--------
+
 ## 2.2.1 - 2021-08-12
 
 ### Fixed

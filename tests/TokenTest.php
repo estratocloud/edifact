@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class TokenTest extends TestCase
 {
-
     public function testType(): void
     {
         $token = new Token(Token::CONTENT, "ok");

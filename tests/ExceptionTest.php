@@ -12,8 +12,6 @@ use function pathinfo;
 
 class ExceptionTest extends TestCase
 {
-
-
     /**
      * @return iterable<array>
      */

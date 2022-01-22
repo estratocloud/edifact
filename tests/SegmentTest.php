@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class SegmentTest extends TestCase
 {
-
     public function testGetSegmentCode(): void
     {
         $segment = new Segment("OMD");

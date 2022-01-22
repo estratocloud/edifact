@@ -11,7 +11,6 @@ use function iterator_to_array;
 
 class MessageTest extends TestCase
 {
-
     public function testFromFile(): void
     {
         $this->expectException(\InvalidArgumentException::class);

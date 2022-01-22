@@ -8,8 +8,6 @@ use Estrato\Edifact\Segments\SegmentInterface;
 
 interface ParserInterface
 {
-
-
     /**
      * Parse the message into an array of segments.
      *

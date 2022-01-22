@@ -6,8 +6,6 @@ use Estrato\Edifact\Segments\SegmentInterface;
 
 interface SerializerInterface
 {
-
-
     /**
      * Serialize all the passed segments.
      *

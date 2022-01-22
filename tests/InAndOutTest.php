@@ -10,7 +10,6 @@ use function str_replace;
 
 class InAndOutTest extends TestCase
 {
-
     /**
      * @return iterable<array>
      */

@@ -6,8 +6,6 @@ use Estrato\Edifact\Segments\SegmentInterface;
 
 interface MessageInterface
 {
-
-
     /**
      * Get all the segments.
      *

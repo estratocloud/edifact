@@ -1,10 +1,10 @@
 <?php
 
-namespace Metroplex\Edifact;
+namespace Estrato\Edifact;
 
-use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
-use Metroplex\Edifact\Exceptions\ParseException;
-use Metroplex\Edifact\Segments\SegmentInterface;
+use Estrato\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+use Estrato\Edifact\Exceptions\ParseException;
+use Estrato\Edifact\Segments\SegmentInterface;
 
 interface ParserInterface
 {

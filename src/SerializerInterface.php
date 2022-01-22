@@ -1,8 +1,8 @@
 <?php
 
-namespace Metroplex\Edifact;
+namespace Estrato\Edifact;
 
-use Metroplex\Edifact\Segments\SegmentInterface;
+use Estrato\Edifact\Segments\SegmentInterface;
 
 interface SerializerInterface
 {

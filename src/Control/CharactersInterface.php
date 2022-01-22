@@ -1,6 +1,6 @@
 <?php
 
-namespace Metroplex\Edifact\Control;
+namespace Estrato\Edifact\Control;
 
 /**
  * Handle the control characters used in EDI messages.

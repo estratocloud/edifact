@@ -1,8 +1,8 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Estrato\EdifactTests;
 
-use Metroplex\Edifact\Message;
+use Estrato\Edifact\Message;
 use PHPUnit\Framework\TestCase;
 
 use function file_get_contents;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Metroplex\Edifact;
+namespace Estrato\Edifact;
 
 final class Token
 {

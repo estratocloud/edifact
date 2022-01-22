@@ -1,8 +1,8 @@
 <?php
 
-namespace Metroplex\Edifact\Segments;
+namespace Estrato\Edifact\Segments;
 
-use Metroplex\Edifact\Control\CharactersInterface;
+use Estrato\Edifact\Control\CharactersInterface;
 
 /**
  * Factory for producing segments.

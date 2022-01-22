@@ -1,8 +1,8 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Estrato\EdifactTests;
 
-use Metroplex\Edifact\Segments\Segment;
+use Estrato\Edifact\Segments\Segment;
 use PHPUnit\Framework\TestCase;
 
 class SegmentTest extends TestCase

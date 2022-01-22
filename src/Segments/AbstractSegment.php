@@ -1,6 +1,6 @@
 <?php
 
-namespace Metroplex\Edifact\Segments;
+namespace Estrato\Edifact\Segments;
 
 /**
  * Represent a segment of an EDI message.

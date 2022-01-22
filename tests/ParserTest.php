@@ -1,12 +1,12 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Estrato\EdifactTests;
 
 use duncan3dc\ObjectIntruder\Intruder;
-use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
-use Metroplex\Edifact\Parser;
-use Metroplex\Edifact\Segments\Segment;
-use Metroplex\Edifact\Segments\SegmentInterface;
+use Estrato\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+use Estrato\Edifact\Parser;
+use Estrato\Edifact\Segments\Segment;
+use Estrato\Edifact\Segments\SegmentInterface;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 

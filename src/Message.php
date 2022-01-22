@@ -1,10 +1,10 @@
 <?php
 
-namespace Metroplex\Edifact;
+namespace Estrato\Edifact;
 
-use Metroplex\Edifact\Exceptions\InvalidArgumentException;
-use Metroplex\Edifact\Exceptions\ParseException;
-use Metroplex\Edifact\Segments\SegmentInterface;
+use Estrato\Edifact\Exceptions\InvalidArgumentException;
+use Estrato\Edifact\Exceptions\ParseException;
+use Estrato\Edifact\Segments\SegmentInterface;
 
 /**
  * Represent an EDI message for both reading and writing.

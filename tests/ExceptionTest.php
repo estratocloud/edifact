@@ -1,8 +1,8 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Estrato\EdifactTests;
 
-use Metroplex\Edifact\Exceptions\Exception;
+use Estrato\Edifact\Exceptions\Exception;
 use PHPUnit\Framework\TestCase;
 
 use function assert;
@@ -34,7 +34,7 @@ class ExceptionTest extends TestCase
     public function testExceptionInterface(string $file): void
     {
         $className = pathinfo($file, \PATHINFO_FILENAME);
-        $class = "Metroplex\\Edifact\\Exceptions\\{$className}";
+        $class = "Estrato\\Edifact\\Exceptions\\{$className}";
 
         $reflection = new \ReflectionClass($class);
         $result = $reflection->implementsInterface(Exception::class);

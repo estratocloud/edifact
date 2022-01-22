@@ -1,9 +1,9 @@
 <?php
 
-namespace Metroplex\Edifact;
+namespace Estrato\Edifact;
 
-use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
-use Metroplex\Edifact\Exceptions\ParseException;
+use Estrato\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+use Estrato\Edifact\Exceptions\ParseException;
 
 use function in_array;
 use function strlen;

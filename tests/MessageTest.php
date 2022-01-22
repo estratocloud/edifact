@@ -1,9 +1,9 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Estrato\EdifactTests;
 
-use Metroplex\Edifact\Message;
-use Metroplex\Edifact\Segments\Segment;
+use Estrato\Edifact\Message;
+use Estrato\Edifact\Segments\Segment;
 use PHPUnit\Framework\TestCase;
 
 use function is_array;

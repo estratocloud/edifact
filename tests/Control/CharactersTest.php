@@ -1,9 +1,9 @@
 <?php
 
-namespace Metroplex\EdifactTests\Control;
+namespace Estrato\EdifactTests\Control;
 
-use Metroplex\Edifact\Control\Characters;
-use Metroplex\Edifact\Exceptions\InvalidArgumentException;
+use Estrato\Edifact\Control\Characters;
+use Estrato\Edifact\Exceptions\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class CharactersTest extends TestCase

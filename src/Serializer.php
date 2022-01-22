@@ -1,10 +1,10 @@
 <?php
 
-namespace Metroplex\Edifact;
+namespace Estrato\Edifact;
 
-use Metroplex\Edifact\Control\Characters as ControlCharacters;
-use Metroplex\Edifact\Control\CharactersInterface as ControlCharactersInterface;
-use Metroplex\Edifact\Segments\SegmentInterface;
+use Estrato\Edifact\Control\Characters as ControlCharacters;
+use Estrato\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+use Estrato\Edifact\Segments\SegmentInterface;
 
 use function array_map;
 use function implode;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Estrato\EdifactTests;
 
 use duncan3dc\PhpIni\Ini;
 use duncan3dc\PhpIni\Settings;
-use Metroplex\Edifact\Message;
+use Estrato\Edifact\Message;
 use PHPUnit\Framework\TestCase;
 
 use function extension_loaded;

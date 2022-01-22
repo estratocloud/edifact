@@ -1,11 +1,11 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Estrato\EdifactTests;
 
-use Metroplex\Edifact\Control\Characters as ControlCharacters;
-use Metroplex\Edifact\Exceptions\ParseException;
-use Metroplex\Edifact\Token;
-use Metroplex\Edifact\Tokenizer;
+use Estrato\Edifact\Control\Characters as ControlCharacters;
+use Estrato\Edifact\Exceptions\ParseException;
+use Estrato\Edifact\Token;
+use Estrato\Edifact\Tokenizer;
 use PHPUnit\Framework\TestCase;
 
 class TokenizerTest extends TestCase

@@ -1,6 +1,6 @@
 <?php
 
-namespace Metroplex\Edifact\Exceptions;
+namespace Estrato\Edifact\Exceptions;
 
 interface Exception
 {

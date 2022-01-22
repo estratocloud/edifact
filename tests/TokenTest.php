@@ -1,8 +1,8 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Estrato\EdifactTests;
 
-use Metroplex\Edifact\Token;
+use Estrato\Edifact\Token;
 use PHPUnit\Framework\TestCase;
 
 class TokenTest extends TestCase

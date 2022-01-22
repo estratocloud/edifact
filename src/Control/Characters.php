@@ -1,8 +1,8 @@
 <?php
 
-namespace Metroplex\Edifact\Control;
+namespace Estrato\Edifact\Control;
 
-use Metroplex\Edifact\Exceptions\InvalidArgumentException;
+use Estrato\Edifact\Exceptions\InvalidArgumentException;
 
 use function strlen;
 

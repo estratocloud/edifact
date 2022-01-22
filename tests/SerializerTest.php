@@ -1,11 +1,11 @@
 <?php
 
-namespace Metroplex\EdifactTests;
+namespace Estrato\EdifactTests;
 
-use Metroplex\Edifact\Control\Characters;
-use Metroplex\Edifact\Segments\Segment;
-use Metroplex\Edifact\Segments\SegmentInterface;
-use Metroplex\Edifact\Serializer;
+use Estrato\Edifact\Control\Characters;
+use Estrato\Edifact\Segments\Segment;
+use Estrato\Edifact\Segments\SegmentInterface;
+use Estrato\Edifact\Serializer;
 use PHPUnit\Framework\TestCase;
 
 class SerializerTest extends TestCase

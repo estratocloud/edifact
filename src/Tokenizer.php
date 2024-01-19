@@ -12,7 +12,7 @@ use function substr;
 /**
  * Convert EDI messages into tokens for parsing.
  */
-final class Tokenizer
+final class Tokenizer implements TokenizerInterface
 {
     /**
      * @var string $message The message that we are tokenizing.

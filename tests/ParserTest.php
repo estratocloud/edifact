@@ -5,8 +5,11 @@ namespace Estrato\EdifactTests;
 use duncan3dc\ObjectIntruder\Intruder;
 use Estrato\Edifact\Control\CharactersInterface as ControlCharactersInterface;
 use Estrato\Edifact\Parser;
+use Estrato\Edifact\Segments\Factory;
 use Estrato\Edifact\Segments\Segment;
 use Estrato\Edifact\Segments\SegmentInterface;
+use Estrato\Edifact\Token;
+use Estrato\Edifact\TokenizerInterface;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 
@@ -167,5 +170,28 @@ class ParserTest extends TestCase
         $this->assertSegments("ERC+10:?:?+???' - ?:?+???' - ?:?+???'", [
             new Segment("ERC", ["10", ":+?' - :+?' - :+?'"]),
         ]);
+    }
+
+
+    public function testCustomTokenizer(): void
+    {
+        $tokenizer = Mockery::mock(TokenizerInterface::class);
+        $tokens = [
+            new Token(Token::CONTENT, "QTY"),
+            new Token(Token::DATA_SEPARATOR, "+"),
+            new Token(Token::CONTENT, "136"),
+            new Token(Token::COMPONENT_SEPARATOR, ":"),
+            new Token(Token::CONTENT, "999"),
+            new Token(Token::TERMINATOR, "'"),
+        ];
+        $tokenizer->shouldReceive('getTokens')->once()->with("QTY+136:12,235", Mockery::type(ControlCharactersInterface::class))->andReturn($tokens);
+
+        $parser = new Parser(new Factory(), $tokenizer);
+        $segments = $parser->parse("UNA:+,? '\nQTY+136:12,235");
+        $segments = is_array($segments) ? $segments : iterator_to_array($segments);
+
+        $this->assertEquals([
+            new Segment("QTY", ["136", "999"]),
+        ], $segments);
     }
 }

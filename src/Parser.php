@@ -25,18 +25,28 @@ final class Parser implements ParserInterface
      */
     private $factory;
 
+    /**
+     * @var TokenizerInterface $tokenizer
+     */
+    private $tokenizer;
+
 
     /**
      * Create a new instance.
      *
      * @param FactoryInterface $factory A segment factory for creating segments
      */
-    public function __construct(FactoryInterface $factory = null)
+    public function __construct(FactoryInterface $factory = null, TokenizerInterface $tokenizer = null)
     {
         if ($factory === null) {
             $factory = new Factory();
         }
         $this->factory = $factory;
+
+        if ($tokenizer === null) {
+            $tokenizer = new Tokenizer();
+        }
+        $this->tokenizer = $tokenizer;
     }
 
 
@@ -51,11 +61,9 @@ final class Parser implements ParserInterface
      */
     public function parse(string $message, ControlCharactersInterface $characters = null): iterable
     {
-        $tokenizer = new Tokenizer();
-
         $characters = $this->getControlCharacters($message, $characters);
 
-        $tokens = $tokenizer->getTokens($message, $characters);
+        $tokens = $this->tokenizer->getTokens($message, $characters);
 
         $segments = $this->convertTokensToSegments($tokens, $characters);
 

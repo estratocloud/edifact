@@ -5,6 +5,14 @@ Changelog
 
 --------
 
+## 3.1.0 - 2024-01-19
+
+### Added
+
+* [Tokenizer] Provider an interface so different implementations can be used.
+
+--------
+
 ## 3.0.0 - 2022-01-22
 
 ### Changed

@@ -19,9 +19,9 @@
         "duncan3dc/php-ini": "^1.2",
         "maglnet/composer-require-checker": "^2.0 || ^3.0",
         "mockery/mockery": "^1.4",
-        "phpstan/phpstan": "^0.12.99",
-        "phpstan/phpstan-mockery": "^0.12.12",
-        "phpstan/phpstan-phpunit": "^0.12.17",
+        "phpstan/phpstan": "^1.12",
+        "phpstan/phpstan-mockery": "^1.1",
+        "phpstan/phpstan-phpunit": "^1.4",
         "squizlabs/php_codesniffer": "^3.5.8",
         "phpunit/phpunit": "^8.5.23"
     },

@@ -13,7 +13,7 @@ use function pathinfo;
 class ExceptionTest extends TestCase
 {
     /**
-     * @return iterable<array>
+     * @return iterable<array<string>>
      */
     public function exceptionProvider(): iterable
     {

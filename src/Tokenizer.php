@@ -40,7 +40,7 @@ final class Tokenizer implements TokenizerInterface
     private $string;
 
     /**
-     * @var bool $isEscaped If the current character has been esacped.
+     * @var bool $isEscaped If the current character has been escaped.
      */
     private $isEscaped = false;
 

@@ -47,6 +47,30 @@ class TokenizerTest extends TestCase
     }
 
 
+    /**
+     * Regression test for https://github.com/estratocloud/edifact/issues/14
+     */
+    public function testMultiple(): void
+    {
+        $this->assertTokens("RFF+PD:50515", [
+            new Token(Token::CONTENT, "RFF"),
+            new Token(Token::DATA_SEPARATOR, "+"),
+            new Token(Token::CONTENT, "PD"),
+            new Token(Token::COMPONENT_SEPARATOR, ":"),
+            new Token(Token::CONTENT, "50515"),
+        ]);
+
+        # Ensure we can use the same tokenizer instance for multiple messages
+        $this->assertTokens("RFF+PD:50515", [
+            new Token(Token::CONTENT, "RFF"),
+            new Token(Token::DATA_SEPARATOR, "+"),
+            new Token(Token::CONTENT, "PD"),
+            new Token(Token::COMPONENT_SEPARATOR, ":"),
+            new Token(Token::CONTENT, "50515"),
+        ]);
+    }
+
+
     public function testEscape(): void
     {
         $this->assertTokens("RFF+PD?:5", [

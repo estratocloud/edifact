@@ -57,9 +57,11 @@ final class Tokenizer implements TokenizerInterface
     public function getTokens(string $message, ControlCharactersInterface $characters): array
     {
         $this->message = $message;
+        $this->position = 0;
         $this->characters = $characters;
         $this->char = "";
         $this->string = "";
+        $this->isEscaped = false;
 
         $this->readNextChar();
 

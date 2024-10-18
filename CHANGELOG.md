@@ -5,6 +5,14 @@ Changelog
 
 --------
 
+## 3.1.1 - 2024-10-18
+
+### Fixed
+
+* [Tokenizer] Correct a state bug that made it impossible to tokenize/parse multiple messages ([#14](https://github.com/estratocloud/edifact/issues/14)).
+
+--------
+
 ## 3.1.0 - 2024-01-19
 
 ### Added

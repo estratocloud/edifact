@@ -17,5 +17,5 @@ interface ParserInterface
      * @return iterable<SegmentInterface>
      * @throws ParseException
      */
-    public function parse(string $message, ControlCharactersInterface $characters = null): iterable;
+    public function parse(string $message, ?ControlCharactersInterface $characters = null): iterable;
 }

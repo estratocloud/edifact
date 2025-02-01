@@ -5,6 +5,12 @@ Changelog
 
 --------
 
+## 3.2.0 - 2025-02-01
+
+### [Support] Added support for PHP 8.4 ([#15](https://github.com/estratocloud/edifact/issues/15)).
+
+--------
+
 ## 3.1.1 - 2024-10-18
 
 ### Fixed

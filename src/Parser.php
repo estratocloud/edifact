@@ -36,7 +36,7 @@ final class Parser implements ParserInterface
      *
      * @param FactoryInterface $factory A segment factory for creating segments
      */
-    public function __construct(FactoryInterface $factory = null, TokenizerInterface $tokenizer = null)
+    public function __construct(?FactoryInterface $factory = null, ?TokenizerInterface $tokenizer = null)
     {
         if ($factory === null) {
             $factory = new Factory();
@@ -59,7 +59,7 @@ final class Parser implements ParserInterface
      * @return SegmentInterface[]
      * @throws ParseException
      */
-    public function parse(string $message, ControlCharactersInterface $characters = null): iterable
+    public function parse(string $message, ?ControlCharactersInterface $characters = null): iterable
     {
         $characters = $this->getControlCharacters($message, $characters);
 
@@ -79,7 +79,7 @@ final class Parser implements ParserInterface
      *
      * @return ControlCharactersInterface
      */
-    private function getControlCharacters(string &$message, ControlCharactersInterface $characters = null): ControlCharactersInterface
+    private function getControlCharacters(string &$message, ?ControlCharactersInterface $characters = null): ControlCharactersInterface
     {
         if ($characters === null) {
             $characters = new ControlCharacters();

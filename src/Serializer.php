@@ -25,7 +25,7 @@ final class Serializer implements SerializerInterface
     /**
      * @param ControlCharactersInterface|null $characters
      */
-    public function __construct(ControlCharactersInterface $characters = null)
+    public function __construct(?ControlCharactersInterface $characters = null)
     {
         if ($characters === null) {
             $characters = new ControlCharacters();

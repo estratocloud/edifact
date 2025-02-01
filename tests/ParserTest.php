@@ -29,7 +29,7 @@ class ParserTest extends TestCase
     }
 
 
-    public function getControlCharacters(string &$message, ControlCharactersInterface $characters = null): void
+    public function getControlCharacters(string &$message, ?ControlCharactersInterface $characters = null): void
     {
         if ($characters === null) {
             $characters = Mockery::mock(ControlCharactersInterface::class);

@@ -5,9 +5,19 @@ Changelog
 
 --------
 
+## 3.2.1 - 2025-03-19
+
+### Fixed
+
+### [Serializer] Handle null values (as blank strings) ([#11](https://github.com/estratocloud/edifact/issues/11)).
+
+--------
+
 ## 3.2.0 - 2025-02-01
 
-### [Support] Added support for PHP 8.4 ([#15](https://github.com/estratocloud/edifact/issues/15)).
+### Changed
+
+* [Support] Added support for PHP 8.4 ([#15](https://github.com/estratocloud/edifact/issues/15)).
 
 --------
 

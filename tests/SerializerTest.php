@@ -49,6 +49,17 @@ class SerializerTest extends TestCase
     }
 
 
+    /**
+     * Ensure we can handle null values.
+     */
+    public function testBasic3(): void
+    {
+        $this->assertSegments("RFF+PD+", [
+            new Segment("RFF", "PD", null),
+        ]);
+    }
+
+
     public function testEscapeCharacter(): void
     {
         $this->assertSegments("ERC+10:The message does not make sense??", [

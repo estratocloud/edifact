@@ -73,12 +73,16 @@ final class Serializer implements SerializerInterface
     /**
      * Escapes control characters.
      *
-     * @param string $string The string to be escaped
+     * @param ?string $string The string to be escaped
      *
      * @return string
      */
-    private function escape(string $string): string
+    private function escape(?string $string): string
     {
+        if ($string === null) {
+            $string = "";
+        }
+
         $characters = [
             $this->characters->getEscapeCharacter(),
             $this->characters->getComponentSeparator(),

@@ -8,6 +8,9 @@ use Estrato\Edifact\Token;
 use Estrato\Edifact\Tokenizer;
 use PHPUnit\Framework\TestCase;
 
+use function is_array;
+use function iterator_to_array;
+
 class TokenizerTest extends TestCase
 {
     private Tokenizer $tokenizer;
@@ -24,7 +27,8 @@ class TokenizerTest extends TestCase
      */
     private function assertTokens(string $message, array $expected): void
     {
-        $tokens = $this->tokenizer->getTokens("{$message}'", new ControlCharacters());
+        $result = $this->tokenizer->getTokens("{$message}'", new ControlCharacters());
+        $tokens = is_array($result) ? $result : iterator_to_array($result);
 
         $expected[] = new Token(Token::TERMINATOR, "'");
 
@@ -124,6 +128,9 @@ class TokenizerTest extends TestCase
     {
         $this->expectException(ParseException::class);
         $this->expectExceptionMessage("Unexpected end of EDI message");
-        $this->tokenizer->getTokens("TEST", new ControlCharacters());
+        $result = $this->tokenizer->getTokens("TEST", new ControlCharacters());
+        if ($result instanceof \Iterator) {
+            iterator_to_array($result);
+        }
     }
 }

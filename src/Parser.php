@@ -98,10 +98,9 @@ final class Parser implements ParserInterface
      * @return iterable<SegmentInterface>
      * @throws ParseException
      */
-    private function convertTokensToSegments(array $tokens, ControlCharactersInterface $characters): iterable
+    private function convertTokensToSegments(iterable $tokens, ControlCharactersInterface $characters): iterable
     {
-        $segments = [];
-        $currentSegment = -1;
+        $currentSegment = null;
         $inSegment = false;
 
         $part = 0;
@@ -116,9 +115,12 @@ final class Parser implements ParserInterface
 
             # If we're not in a segment, then start a new one now
             } else {
+                # Return the previous segment before starting a new one
+                if ($currentSegment !== null) {
+                    yield $this->produceSegment($currentSegment, $characters);
+                }
                 $inSegment = true;
-                $currentSegment++;
-                $segments[$currentSegment] = [];
+                $currentSegment = [];
                 $part = 0;
                 $key = 0;
             }
@@ -150,15 +152,15 @@ final class Parser implements ParserInterface
              */
             if ($part > 0) {
                 for ($i = 0; $i < $part; $i++) {
-                    if (!isset($segments[$currentSegment][$i])) {
-                        $segments[$currentSegment][$i] = "";
+                    if (!isset($currentSegment[$i])) {
+                        $currentSegment[$i] = "";
                     }
                 }
             }
 
             # If this is the first element within the part then just set it as a string.
             if ($key === 0) {
-                $segments[$currentSegment][$part] = $token->value;
+                $currentSegment[$part] = $token->value;
                 continue;
             }
 
@@ -170,23 +172,35 @@ final class Parser implements ParserInterface
                 $value = ($i === $key) ? $token->value : "";
 
                 # If there is an initial element set as a string, we need to convert it into an array before we append to it
-                if (isset($segments[$currentSegment][$part]) && !is_array($segments[$currentSegment][$part])) {
-                    $segments[$currentSegment][$part] = [$segments[$currentSegment][$part]];
+                if (isset($currentSegment[$part]) && !is_array($currentSegment[$part])) {
+                    $currentSegment[$part] = [$currentSegment[$part]];
                 }
 
                 # If this part does not exist, set it now
-                if (!isset($segments[$currentSegment][$part][$i])) {
-                    $segments[$currentSegment][$part][$i] = $value;
+                if (!isset($currentSegment[$part][$i])) {
+                    $currentSegment[$part][$i] = $value;
                 }
             }
         }
 
-        foreach ($segments as $segment) {
-            $code = array_shift($segment);
-            if (!is_string($code)) {
-                throw new ParseException("Invalid segment encountered, first element should be the name");
-            }
-            yield $this->factory->createSegment($characters, $code, ...$segment);
+        if ($currentSegment !== null) {
+            yield $this->produceSegment($currentSegment, $characters);
         }
+    }
+
+
+    /**
+     * @param array<mixed> $elements
+     *
+     * @throws ParseException
+     */
+    private function produceSegment(array $elements, ControlCharactersInterface $characters): SegmentInterface
+    {
+        $code = array_shift($elements);
+        if (!is_string($code)) {
+            throw new ParseException("Invalid segment encountered, first element should be the name");
+        }
+
+        return $this->factory->createSegment($characters, $code, ...$elements);
     }
 }

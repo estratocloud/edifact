@@ -13,8 +13,8 @@ interface TokenizerInterface
     /**
      * Convert the passed message into tokens.
      *
-     * @return array<Token>
+     * @return iterable<Token>
      * @throws ParseException
      */
-    public function getTokens(string $message, ControlCharactersInterface $characters): array;
+    public function getTokens(string $message, ControlCharactersInterface $characters): iterable;
 }

@@ -51,10 +51,10 @@ final class Tokenizer implements TokenizerInterface
      * @param string $message The EDI message
      * @param ControlCharactersInterface $characters
      *
-     * @return Token[]
+     * @return iterable<Token>
      * @throws ParseException
      */
-    public function getTokens(string $message, ControlCharactersInterface $characters): array
+    public function getTokens(string $message, ControlCharactersInterface $characters): iterable
     {
         $this->message = $message;
         $this->position = 0;
@@ -65,12 +65,9 @@ final class Tokenizer implements TokenizerInterface
 
         $this->readNextChar();
 
-        $tokens = [];
         while ($token = $this->getNextToken()) {
-            $tokens[] = $token;
+            yield $token;
         }
-
-        return $tokens;
     }
 
 

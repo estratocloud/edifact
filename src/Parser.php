@@ -114,7 +114,7 @@ final class Parser implements ParserInterface
      *
      * @return iterable&SegmentInterface[]
      */
-    private function convertTokensToSegments(array $tokens, ControlCharactersInterface $characters): iterable
+    private function convertTokensToSegments(iterable $tokens, ControlCharactersInterface $characters): iterable
     {
         $segments = [];
         $currentSegment = -1;

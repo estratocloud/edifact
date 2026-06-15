@@ -6,7 +6,7 @@ Full documentation is available at http://estratocloud.github.io/edifact/
 PHPDoc API documentation is also available at [http://estratocloud.github.io/edifact/api/](http://estratocloud.github.io/edifact/api/namespaces/Estrato.Edifact.html)  
 
 [![release](https://poser.pugx.org/estrato/edifact/version.svg)](https://packagist.org/packages/estrato/edifact)
-[![build](https://github.com/estratocloud/edifact/workflows/buildcheck/badge.svg?branch=main)](https://github.com/estratocloud/edifact/actions/workflows/buildcheck.yml?query=branch%3Amain)
+[![build](https://github.com/estratocloud/edifact/actions/workflows/buildcheck.yaml/badge.svg)](https://github.com/estratocloud/edifact/actions/workflows/buildcheck.yaml?query=branch%3Amain)
 [![coverage](https://codecov.io/gh/estratocloud/edifact/graph/badge.svg)](https://codecov.io/gh/estratocloud/edifact)
 
 

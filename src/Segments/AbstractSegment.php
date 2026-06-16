@@ -7,15 +7,12 @@ namespace Estrato\Edifact\Segments;
  */
 abstract class AbstractSegment implements SegmentInterface
 {
-    /**
-     * @var string $code The code of the segment.
-     */
-    private $code;
+    private string $code;
 
     /**
      * @var array<mixed> $elements The data elements for this segment.
      */
-    private $elements;
+    private array $elements;
 
 
     /**
@@ -24,7 +21,7 @@ abstract class AbstractSegment implements SegmentInterface
      * @param string $code The code of the segment.
      * @param mixed ...$elements The data elements for this segment.
      */
-    public function __construct(string $code, ...$elements)
+    public function __construct(string $code, mixed ...$elements)
     {
         $this->code = $code;
         $this->elements = $elements;
@@ -33,8 +30,6 @@ abstract class AbstractSegment implements SegmentInterface
 
     /**
      * Get the code of this segment.
-     *
-     * @return string
      */
     public function getSegmentCode(): string
     {
@@ -55,12 +50,8 @@ abstract class AbstractSegment implements SegmentInterface
 
     /**
      * Get an element from the segment.
-     *
-     * @param int $key The element to get
-     *
-     * @return mixed|null
      */
-    public function getElement(int $key)
+    public function getElement(int $key): mixed
     {
         if (!isset($this->elements[$key])) {
             return null;

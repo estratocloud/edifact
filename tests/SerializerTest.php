@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class SerializerTest extends TestCase
 {
-    /**
-     * @var Serializer $serializer The instance we are testing.
-     */
-    private $serializer;
+    private Serializer $serializer;
 
     public function setUp(): void
     {

@@ -8,10 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class CharactersTest extends TestCase
 {
-    /**
-     * @var Characters $characters The instance we are testing.
-     */
-    private $characters;
+    private Characters $characters;
 
     public function setUp(): void
     {

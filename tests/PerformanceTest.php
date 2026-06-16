@@ -14,11 +14,9 @@ use function file_put_contents;
 
 class PerformanceTest extends TestCase
 {
-    /** @var string */
-    private $tmp = __DIR__ . "/data/tmp.edi";
+    private string $tmp = __DIR__ . "/data/tmp.edi";
 
-    /** @var Ini */
-    private $ini;
+    private Ini $ini;
 
 
     public function setUp(): void

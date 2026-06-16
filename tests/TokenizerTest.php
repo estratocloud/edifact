@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class TokenizerTest extends TestCase
 {
-    /**
-     * @var Tokenizer $tokenizer The instance we are testing.
-     */
-    private $tokenizer;
+    private Tokenizer $tokenizer;
 
     public function setUp(): void
     {

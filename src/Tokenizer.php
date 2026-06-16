@@ -17,39 +17,36 @@ final class Tokenizer implements TokenizerInterface
     /**
      * @var string $message The message that we are tokenizing.
      */
-    private $message;
+    private string $message = "";
 
     /**
      * @var int The current position in the message.
      */
-    private $position = 0;
+    private int $position = 0;
 
     /**
      * @var ControlCharactersInterface $characters The control characters for the message.
      */
-    private $characters;
+    private ControlCharactersInterface $characters;
 
     /**
      * @var string $char The current character from the message we are dealing with.
      */
-    private $char = "";
+    private string $char = "";
 
     /**
      * @var string $string The stored characters for the next token.
      */
-    private $string;
+    private string $string = "";
 
     /**
      * @var bool $isEscaped If the current character has been escaped.
      */
-    private $isEscaped = false;
+    private bool $isEscaped = false;
 
 
     /**
      * Convert the passed message into tokens.
-     *
-     * @param string $message The EDI message
-     * @param ControlCharactersInterface $characters
      *
      * @return array<Token>
      * @throws ParseException
@@ -76,8 +73,6 @@ final class Tokenizer implements TokenizerInterface
 
     /**
      * Read the next character from the message.
-     *
-     * @return void
      */
     private function readNextChar(): void
     {
@@ -98,8 +93,6 @@ final class Tokenizer implements TokenizerInterface
 
     /**
      * Get the next character from the message.
-     *
-     * @return string
      */
     private function getNextChar(): string
     {
@@ -112,8 +105,6 @@ final class Tokenizer implements TokenizerInterface
 
     /**
      * Get the next token from the message.
-     *
-     * @return Token|null
      * @throws ParseException
      */
     private function getNextToken(): ?Token
@@ -160,8 +151,6 @@ final class Tokenizer implements TokenizerInterface
 
     /**
      * Check if the current character is a control character.
-     *
-     * @return bool
      */
     private function isControlCharacter(): bool
     {
@@ -187,8 +176,6 @@ final class Tokenizer implements TokenizerInterface
 
     /**
      * Store the current character and read the next one from the message.
-     *
-     * @return void
      */
     private function storeCurrentCharAndReadNext(): void
     {
@@ -199,8 +186,6 @@ final class Tokenizer implements TokenizerInterface
 
     /**
      * Get the previously stored characters.
-     *
-     * @return string
      */
     private function extractStoredChars(): string
     {
@@ -214,8 +199,6 @@ final class Tokenizer implements TokenizerInterface
 
     /**
      * Check if we've reached the end of the message
-     *
-     * @return bool
      */
     private function endOfMessage(): bool
     {

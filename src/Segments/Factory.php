@@ -9,9 +9,6 @@ use Estrato\Edifact\Control\CharactersInterface;
  */
 final class Factory implements FactoryInterface
 {
-    /**
-     * @inheritdoc
-     */
     public function createSegment(CharactersInterface $characters, $name, ...$elements): SegmentInterface
     {
         return new Segment($name, ...$elements);

@@ -14,7 +14,7 @@ final class Message implements MessageInterface
     /**
      * @var array<SegmentInterface> $segments The segments that make up this message.
      */
-    private $segments = [];
+    private array $segments = [];
 
 
     /**
@@ -22,7 +22,6 @@ final class Message implements MessageInterface
      *
      * @param string $file The full path to a file that contains an EDI message
      *
-     * @return static
      * @throws ParseException
      */
     public static function fromFile(string $file): self
@@ -32,35 +31,28 @@ final class Message implements MessageInterface
             throw new InvalidArgumentException("Unable to read the file: {$file}");
         }
 
-        return static::fromString($message);
+        return self::fromString($message);
     }
 
 
     /**
      * Create a new instance from a string.
      *
-     * @param string $string The EDI message content
-     *
-     * @return static
      * @throws ParseException
      */
     public static function fromString(string $string): self
     {
         $segments = (new Parser())->parse($string);
-        return static::fromSegments(...$segments);
+        return self::fromSegments(...$segments);
     }
 
 
     /**
      * Create a new instance from an array of segments.
-     *
-     * @param SegmentInterface ...$segments The segments of the message
-     *
-     * @return static
      */
     public static function fromSegments(SegmentInterface ...$segments): self
     {
-        return (new static())->addSegments(...$segments);
+        return (new self())->addSegments(...$segments);
     }
 
 
@@ -78,8 +70,6 @@ final class Message implements MessageInterface
     /**
      * Get all the segments that match the requested code.
      *
-     * @param string $code The code of the segment to return
-     *
      * @return iterable<SegmentInterface>
      */
     public function getSegments(string $code): iterable
@@ -94,10 +84,6 @@ final class Message implements MessageInterface
 
     /**
      * Get the first segment that matches the requested code.
-     *
-     * @param string $code The code of the segment to return
-     *
-     * @return SegmentInterface|null
      */
     public function getSegment(string $code): ?SegmentInterface
     {
@@ -111,8 +97,6 @@ final class Message implements MessageInterface
 
     /**
      * Add multiple segments to the message.
-     *
-     * @param SegmentInterface ...$segments The segments to add
      *
      * @return $this
      */
@@ -129,8 +113,6 @@ final class Message implements MessageInterface
     /**
      * Add a segment to the message.
      *
-     * @param SegmentInterface $segment The segment to add
-     *
      * @return $this
      */
     public function addSegment(SegmentInterface $segment): MessageInterface
@@ -143,8 +125,6 @@ final class Message implements MessageInterface
 
     /**
      * Serialize all the segments added to this object.
-     *
-     * @return string
      */
     public function serialize(): string
     {
@@ -154,8 +134,6 @@ final class Message implements MessageInterface
 
     /**
      * Allow the object to be serialized by casting to a string.
-     *
-     * @return string
      */
     public function __toString()
     {

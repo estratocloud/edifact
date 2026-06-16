@@ -16,15 +16,9 @@ use function str_replace;
  */
 final class Serializer implements SerializerInterface
 {
-    /**
-     * @var ControlCharactersInterface $characters The control characters to use when serializing.
-     */
-    private $characters;
+    private ControlCharactersInterface $characters;
 
 
-    /**
-     * @param ControlCharactersInterface|null $characters
-     */
     public function __construct(?ControlCharactersInterface $characters = null)
     {
         if ($characters === null) {
@@ -36,10 +30,6 @@ final class Serializer implements SerializerInterface
 
     /**
      * Serialize all the passed segments.
-     *
-     * @param SegmentInterface ...$segments The segments to serialize
-     *
-     * @return string
      */
     public function serialize(SegmentInterface ...$segments): string
     {
@@ -72,10 +62,6 @@ final class Serializer implements SerializerInterface
 
     /**
      * Escapes control characters.
-     *
-     * @param ?string $string The string to be escaped
-     *
-     * @return string
      */
     private function escape(?string $string): string
     {

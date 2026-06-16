@@ -19,10 +19,7 @@ use function iterator_to_array;
 
 class ParserTest extends TestCase
 {
-    /**
-     * @var Parser $parser The instance we are testing.
-     */
-    private $parser;
+    private Parser $parser;
 
     public function setUp(): void
     {

@@ -20,21 +20,13 @@ use function substr;
  */
 final class Parser implements ParserInterface
 {
-    /**
-     * @var FactoryInterface $factory A segment factory for creating segments.
-     */
-    private $factory;
+    private FactoryInterface $factory;
 
-    /**
-     * @var TokenizerInterface $tokenizer
-     */
-    private $tokenizer;
+    private TokenizerInterface $tokenizer;
 
 
     /**
      * Create a new instance.
-     *
-     * @param FactoryInterface $factory A segment factory for creating segments
      */
     public function __construct(?FactoryInterface $factory = null, ?TokenizerInterface $tokenizer = null)
     {
@@ -53,9 +45,6 @@ final class Parser implements ParserInterface
     /**
      * Parse the message into an array of segments.
      *
-     * @param string $message The EDI message
-     * @param ControlCharactersInterface $characters The control characters
-     *
      * @return iterable<SegmentInterface>
      * @throws ParseException
      */
@@ -73,11 +62,6 @@ final class Parser implements ParserInterface
 
     /**
      * Read (and remove) the UNA segment from the passed string.
-     *
-     * @param string $message The EDI message to extract the UNA from
-     * @param ControlCharactersInterface $characters The control characters
-     *
-     * @return ControlCharactersInterface
      */
     private function getControlCharacters(string &$message, ?ControlCharactersInterface $characters = null): ControlCharactersInterface
     {
@@ -110,9 +94,9 @@ final class Parser implements ParserInterface
      * Convert the tokenized message into an array of segments.
      *
      * @param array<Token> $tokens The tokens that make up the message
-     * @param ControlCharactersInterface $characters The control characters
      *
      * @return iterable<SegmentInterface>
+     * @throws ParseException
      */
     private function convertTokensToSegments(array $tokens, ControlCharactersInterface $characters): iterable
     {

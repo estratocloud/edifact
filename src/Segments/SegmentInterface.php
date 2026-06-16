@@ -9,8 +9,6 @@ interface SegmentInterface
 {
     /**
      * Get the code of this segment.
-     *
-     * @return string
      */
     public function getSegmentCode(): string;
 
@@ -26,9 +24,7 @@ interface SegmentInterface
     /**
      * Get an element from the segment.
      *
-     * @param int $key The element to get
-     *
-     * @return mixed
+     * @return mixed Returns null if the element does not exist
      */
-    public function getElement(int $key);
+    public function getElement(int $key): mixed;
 }

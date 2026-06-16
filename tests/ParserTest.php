@@ -4,6 +4,7 @@ namespace Estrato\EdifactTests;
 
 use duncan3dc\ObjectIntruder\Intruder;
 use Estrato\Edifact\Control\CharactersInterface as ControlCharactersInterface;
+use Estrato\Edifact\Exceptions\ParseException;
 use Estrato\Edifact\Parser;
 use Estrato\Edifact\Segments\Factory;
 use Estrato\Edifact\Segments\Segment;
@@ -170,6 +171,17 @@ class ParserTest extends TestCase
         $this->assertSegments("ERC+10:?:?+???' - ?:?+???' - ?:?+???'", [
             new Segment("ERC", ["10", ":+?' - :+?' - :+?'"]),
         ]);
+    }
+
+
+    public function testInvalid1(): void
+    {
+        $this->expectException(ParseException::class);
+        $this->expectExceptionMessage("Invalid segment encountered, first element should be the name");
+        $result = $this->parser->parse("UNA:+,? '\n:'\n");
+        if ($result instanceof \Iterator) {
+            iterator_to_array($result);
+        }
     }
 
 

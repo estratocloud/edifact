@@ -9,7 +9,7 @@ The recommended method of installing this library is via [Composer](https://getc
 Run the following command from your project root:
 
 ~~~
-$ composer require metroplex-systems/edifact
+$ composer require estrato/edifact
 ~~~
 
 
@@ -18,7 +18,7 @@ Or you can manually add it to your composer.json:
 ~~~javascript
 {
     "require": {
-        "metroplex-systems/edifact": "^0.1.0"
+        "estrato/edifact": "^4.0"
     }
 }
 ~~~

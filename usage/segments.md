@@ -2,12 +2,17 @@
 layout: default
 title: Segments
 permalink: /usage/segments/
-api: Segment
+api: Segments-SegmentInterface
 ---
 
-At the moment, the `Segment` class is pretty dumb, but it is slightly easier than plain arrays.
+The `Segment` class is a fairly light structure that holds the underlying data from the EDIFACT file.  
+When serializing you can create it like so:
 
-You can get the name of the segment:
+```php
+$segment = new Segment("UNH", 123456, ["INVRPT", "D", "96A", "UN", "EAN004"]);
+```
+
+And when parsing you can get the name of the segment:
 
 ~~~php
 $name = $segment->getName();
@@ -23,7 +28,7 @@ $segment->getElement(0);
 $segment->getElement(1)[1];
 ~~~
 
-If you just want all of the segments data you can retrieve it like so:
+If you just want all of the segment's data you can retrieve it like so:
 
 ~~~php
 foreach ($segment->getAllElements() as $element) {

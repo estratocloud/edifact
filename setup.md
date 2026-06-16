@@ -4,14 +4,14 @@ title: Setup
 permalink: /setup/
 ---
 
-All classes are in the `Metroplex\Edifact` namespace.
+All classes are in the `Estrato\Edifact` namespace.
 
-The easiest way of working with EDI messages is using the [Message](../usage/reading-messages/) class:
+The easiest way of working with EDI messages is using the [Message](../api/classes/Estrato-Edifact-Message.html) class:
 
 ~~~php
-require_once __DIR__ . "vendor/autoload.php";
+require_once __DIR__ . "/vendor/autoload.php";
 
-use Metroplex\Edifact\Message;
+use Estrato\Edifact\Message;
 
-$edifact = new Message;
+$edifact = new Message();
 ~~~

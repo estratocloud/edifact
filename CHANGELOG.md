@@ -1,7 +1,19 @@
 Changelog
 =========
 
-## x.y.z - UNRELEASED
+## 4.0.0 - 2026-06-16
+
+### Added
+
+* [Characters] A new `Tradacoms` characters class is available to parse/serialize [TRADACOMS](https://en.wikipedia.org/wiki/TRADACOMS) messages.
+* [Characters] The `CharactersInterface` now contains `getSegmentSeparator()`, `withUNASegment()` and `includesUNASegment()` methods.
+
+### Changed
+
+* [Tokenizer] The `getTokens()` method now returns an iterable (actually a `\Generator`) to allow segments to be streamed and reduce memory usage ([#16](https://github.com/estratocloud/edifact/pull/16)).
+* [Types] Added remaining missing types, mainly properties but also `FactoryInterface#createSegment()` and the `AbstractSegment` class.
+* [Support] Added support for PHP 8.5.
+* [Support] Dropped support for PHP 7.3 and 7.4.
 
 --------
 
@@ -9,7 +21,7 @@ Changelog
 
 ### Fixed
 
-### [Serializer] Handle null values (as blank strings) ([#11](https://github.com/estratocloud/edifact/issues/11)).
+* [Serializer] Handle null values (as blank strings) ([#11](https://github.com/estratocloud/edifact/issues/11)).
 
 --------
 

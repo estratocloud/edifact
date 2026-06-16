@@ -8,6 +8,18 @@ namespace Estrato\Edifact\Control;
 interface CharactersInterface
 {
     /**
+     * Set whether the UNA segment should be part of the message or not.
+     */
+    public function withUNASegment(bool $include): self;
+
+
+    /**
+     * Check whether the UNA segment should be part of the message or not.
+     */
+    public function includesUNASegment(): bool;
+
+
+    /**
      * Set the control character used to separate components.
      */
     public function withComponentSeparator(string $character): self;

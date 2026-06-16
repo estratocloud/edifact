@@ -12,6 +12,11 @@ use function strlen;
 final class Characters implements CharactersInterface
 {
     /**
+     * @var bool $includeUNASegment Whether we should include the UNA segment or not.
+     */
+    private bool $includeUNASegment = true;
+
+    /**
      * @var string $componentSeparator The control character used to separate components.
      */
     private string $componentSeparator = ":";
@@ -55,6 +60,20 @@ final class Characters implements CharactersInterface
         $characters->$type = $character;
 
         return $characters;
+    }
+
+
+    public function withUNASegment(bool $include): self
+    {
+        $characters = clone $this;
+        $characters->includeUNASegment = $include;
+        return $characters;
+    }
+
+
+    public function includesUNASegment(): bool
+    {
+        return $this->includeUNASegment;
     }
 
 

@@ -50,6 +50,7 @@ class ParserTest extends TestCase
         $message = "TEST";
 
         $characters = Mockery::mock(ControlCharactersInterface::class);
+        $characters->shouldReceive("withUNASegment")->once()->with(false)->andReturn($characters);
 
         $this->getControlCharacters($message, $characters);
 

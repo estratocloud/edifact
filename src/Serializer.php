@@ -33,13 +33,17 @@ final class Serializer implements SerializerInterface
      */
     public function serialize(SegmentInterface ...$segments): string
     {
-        $message = "UNA";
-        $message .= $this->characters->getComponentSeparator();
-        $message .= $this->characters->getDataSeparator();
-        $message .= $this->characters->getDecimalPoint();
-        $message .= $this->characters->getEscapeCharacter();
-        $message .= $this->characters->getReservedSpace();
-        $message .= $this->characters->getSegmentTerminator();
+        $message = "";
+
+        if ($this->characters->includesUNASegment()) {
+            $message .= "UNA";
+            $message .= $this->characters->getComponentSeparator();
+            $message .= $this->characters->getDataSeparator();
+            $message .= $this->characters->getDecimalPoint();
+            $message .= $this->characters->getEscapeCharacter();
+            $message .= $this->characters->getReservedSpace();
+            $message .= $this->characters->getSegmentTerminator();
+        }
 
         foreach ($segments as $segment) {
             $message .= $segment->getSegmentCode();

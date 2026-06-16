@@ -57,6 +57,21 @@ class SerializerTest extends TestCase
     }
 
 
+    /**
+     * Ensure we can produce a file without a UNA segment.
+     */
+    public function testSerialize1(): void
+    {
+        $characters = (new Characters())->withUNASegment(false);
+
+        $serializer = new Serializer($characters);
+        $message = $serializer->serialize(new Segment("RFF", ["PD", "50515"]));
+
+        $this->assertEquals("RFF+PD:50515'", $message);
+    }
+
+
+
     public function testEscapeCharacter(): void
     {
         $this->assertSegments("ERC+10:The message does not make sense??", [

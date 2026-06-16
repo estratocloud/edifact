@@ -70,7 +70,7 @@ final class Parser implements ParserInterface
         }
 
         if (substr($message, 0, 3) !== "UNA") {
-            return $characters;
+            return $characters->withUNASegment(false);
         }
 
         # Get the character definitions

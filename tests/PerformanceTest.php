@@ -2,8 +2,6 @@
 
 namespace Estrato\EdifactTests;
 
-use duncan3dc\PhpIni\Ini;
-use duncan3dc\PhpIni\Settings;
 use Estrato\Edifact\Message;
 use PHPUnit\Framework\TestCase;
 
@@ -11,12 +9,12 @@ use function extension_loaded;
 use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
+use function floor;
+use function memory_get_peak_usage;
 
 class PerformanceTest extends TestCase
 {
     private string $tmp = __DIR__ . "/data/tmp.edi";
-
-    private Ini $ini;
 
 
     public function setUp(): void
@@ -27,10 +25,6 @@ class PerformanceTest extends TestCase
         if (extension_loaded("pcov")) {
             $this->markTestSkipped("Cannot test performance as pcov makes use too much memory");
         }
-
-        # Allow this test to use up to 512mb of memory
-        $this->ini = new Ini();
-        $this->ini->set(Settings::MEMORY_LIMIT, (string) (512 * 1024 * 1024));
 
         $data = file_get_contents(__DIR__ . "/data/wikipedia.edi");
 
@@ -46,7 +40,6 @@ class PerformanceTest extends TestCase
         if (file_exists($this->tmp)) {
             unlink($this->tmp);
         }
-        $this->ini->cleanup();
     }
 
 
@@ -59,5 +52,8 @@ class PerformanceTest extends TestCase
         $finish = time();
 
         $this->assertLessThan(10, $finish - $start);
+
+        $memory = floor(memory_get_peak_usage(true) / 1024 / 1024);
+        $this->assertLessThan(200, $memory);
     }
 }

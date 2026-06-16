@@ -12,7 +12,7 @@ use Estrato\Edifact\Segments\SegmentInterface;
 final class Message implements MessageInterface
 {
     /**
-     * @var SegmentInterface[] $segments The segments that make up this message.
+     * @var array<SegmentInterface> $segments The segments that make up this message.
      */
     private $segments = [];
 
@@ -67,7 +67,7 @@ final class Message implements MessageInterface
     /**
      * Get all the segments.
      *
-     * @return SegmentInterface[]
+     * @return array<SegmentInterface>
      */
     public function getAllSegments(): array
     {
@@ -80,7 +80,7 @@ final class Message implements MessageInterface
      *
      * @param string $code The code of the segment to return
      *
-     * @return iterable&SegmentInterface[]
+     * @return iterable<SegmentInterface>
      */
     public function getSegments(string $code): iterable
     {

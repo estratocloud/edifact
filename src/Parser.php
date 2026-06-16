@@ -56,7 +56,7 @@ final class Parser implements ParserInterface
      * @param string $message The EDI message
      * @param ControlCharactersInterface $characters The control characters
      *
-     * @return SegmentInterface[]
+     * @return iterable<SegmentInterface>
      * @throws ParseException
      */
     public function parse(string $message, ?ControlCharactersInterface $characters = null): iterable
@@ -109,10 +109,10 @@ final class Parser implements ParserInterface
     /**
      * Convert the tokenized message into an array of segments.
      *
-     * @param Token[] $tokens The tokens that make up the message
+     * @param array<Token> $tokens The tokens that make up the message
      * @param ControlCharactersInterface $characters The control characters
      *
-     * @return iterable&SegmentInterface[]
+     * @return iterable<SegmentInterface>
      */
     private function convertTokensToSegments(array $tokens, ControlCharactersInterface $characters): iterable
     {

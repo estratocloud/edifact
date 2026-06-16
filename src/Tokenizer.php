@@ -51,7 +51,7 @@ final class Tokenizer implements TokenizerInterface
      * @param string $message The EDI message
      * @param ControlCharactersInterface $characters
      *
-     * @return Token[]
+     * @return array<Token>
      * @throws ParseException
      */
     public function getTokens(string $message, ControlCharactersInterface $characters): array

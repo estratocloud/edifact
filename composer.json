@@ -18,7 +18,7 @@
         "duncan3dc/object-intruder": "^1.0",
         "maglnet/composer-require-checker": "^4.0",
         "mockery/mockery": "^1.4",
-        "nikic/php-parser": "^4.19",
+        "nikic/php-parser": "^4.19 || ^5.0",
         "phpstan/phpstan": "^1.12",
         "phpstan/phpstan-mockery": "^1.1",
         "phpstan/phpstan-phpunit": "^1.4",

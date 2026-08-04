@@ -5,6 +5,7 @@ RUN apt update && apt install -y libtool git zip
 COPY --from=ghcr.io/php/pie:bin /pie /usr/local/bin/pie
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
+ENV BOX_REQUIREMENT_CHECKER=0
 RUN pie install pecl/pcov && docker-php-ext-enable pcov
 
 RUN echo "memory_limit = -1" > /usr/local/etc/php/conf.d/edifact.ini

@@ -1,9 +1,10 @@
 ARG PHP_VERSION=8.0
-FROM php:${PHP_VERSION}-cli
+FROM php:${PHP_VERSION}-cli-alpine
+
+RUN apk add --no-cache git zip $PHPIZE_DEPS
 
 RUN pecl install pcov && docker-php-ext-enable pcov
 
-RUN apt update && apt install -y git zip
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN echo "memory_limit = -1" > /usr/local/etc/php/conf.d/edifact.ini

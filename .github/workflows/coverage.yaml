@@ -3,7 +3,7 @@ name: coverage
 on: push
 
 jobs:
-  build:
+  coverage:
     runs-on: ubuntu-latest
 
     steps:
@@ -11,11 +11,9 @@ jobs:
 
       - name: Create Docker Container
         run: |
-          docker build . -t ci-image --build-arg PHP_VERSION=8.5 --build-arg COVERAGE=pcov
           docker run --interactive --detach \
             --volume ${{ github.workspace }}:/app \
-            --env CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }} \
-            --name ci ci-image
+            --name ci "$(docker build --build-arg PHP_VERSION=8.5 -q .)"
 
       - name: Install Dependencies
         run: docker exec ci composer update --no-interaction --no-ansi --prefer-dist
@@ -24,4 +22,8 @@ jobs:
         run: docker exec ci vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Code Coverage
-        run: docker exec ci bash -c "bash <(curl -s https://codecov.io/bash)"
+        uses: codecov/codecov-action@v7
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
